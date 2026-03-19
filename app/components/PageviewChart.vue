@@ -17,8 +17,8 @@ import { Line } from 'vue-chartjs'
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip } from 'chart.js'
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
 
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/pageviews?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/pageviews?days=${period.value}`, { watch: [period, refreshKey] })
 const chartData = computed(() => {
   const results = (data.value as any)?.results ?? []
   return {

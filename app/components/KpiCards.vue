@@ -8,8 +8,8 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error } = useFetch(() => `/api/posthog/overview?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error } = useFetch(() => `/api/posthog/overview?days=${period.value}`, { watch: [period, refreshKey] })
 const bounceRate = computed(() => {
   if (!data.value) return '0%'
   const { pageviews, uniqueUsers } = data.value

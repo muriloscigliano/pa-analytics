@@ -26,8 +26,8 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/funnel?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/funnel?days=${period.value}`, { watch: [period, refreshKey] })
 const steps = computed(() => {
   if (!data.value || !Array.isArray(data.value)) return []
   const raw = data.value as Array<{ custom_name: string; count: number }>

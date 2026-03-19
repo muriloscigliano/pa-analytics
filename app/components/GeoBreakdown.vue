@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/geo?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/geo?days=${period.value}`, { watch: [period, refreshKey] })
 const locations = computed(() => ((data.value as any)?.results ?? []).map(([country, city, pageviews, users]: [string, string, number, number]) => ({ country, city, pageviews, users })))
 </script>

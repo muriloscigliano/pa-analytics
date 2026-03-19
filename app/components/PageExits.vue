@@ -28,8 +28,8 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/page-exits?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/page-exits?days=${period.value}`, { watch: [period, refreshKey] })
 
 function formatDuration(seconds: number): string {
   if (seconds < 60) return `${Math.round(seconds)}s`

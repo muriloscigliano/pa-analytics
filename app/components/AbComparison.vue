@@ -28,8 +28,8 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/ab-comparison?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/ab-comparison?days=${period.value}`, { watch: [period, refreshKey] })
 interface Row { variant: string; event: string; total: number; users: number }
 const rows = computed<Row[]>(() => ((data.value as any)?.results ?? []).map(([variant, event, total, users]: [string, string, number, number]) => ({ variant, event, total, users })))
 const variantNames = computed(() => [...new Set(rows.value.map(r => r.variant))])

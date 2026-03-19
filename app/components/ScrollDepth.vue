@@ -29,8 +29,8 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/scroll-depth?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/scroll-depth?days=${period.value}`, { watch: [period, refreshKey] })
 const rows = computed(() => ((data.value as any)?.results ?? []).map(([page, scrollPct, duration, contentPct, samples]: [string, number, number, number, number]) => ({
   page: page || '/', scrollPct: scrollPct ?? 0, duration: duration ?? 0, contentPct: contentPct ?? 0, samples,
 })))

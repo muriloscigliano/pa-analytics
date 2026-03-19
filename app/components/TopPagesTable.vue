@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/top-pages?days=${period.value}&limit=10`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/top-pages?days=${period.value}&limit=10`, { watch: [period, refreshKey] })
 const rows = computed(() => ((data.value as any)?.results ?? []).map(([url, views, uniqueVisitors]: [string, number, number]) => ({ url, views, uniqueVisitors })))
 </script>

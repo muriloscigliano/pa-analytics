@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/traffic-sources?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/traffic-sources?days=${period.value}`, { watch: [period, refreshKey] })
 const sources = computed(() => {
   const r = (data.value as any)?.results ?? []; const max = r[0]?.[2] || 1
   return r.map(([referrer, visitorType, visits, users]: [string, string, number, number]) => ({ referrer, visitorType, visits, users, pct: Math.round((visits / max) * 100) }))

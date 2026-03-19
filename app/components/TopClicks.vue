@@ -8,7 +8,7 @@
       <div v-for="(group, page) in grouped" :key="page" style="margin-bottom: 24px;">
         <p style="font-size: 14px; font-weight: 600; color: var(--dash-text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">{{ page || '/' }}</p>
         <div>
-          <div v-for="(click, i) in group" :key="i" class="flex items-center justify-between" :style="{ padding: '14px 0', borderBottom: i < group.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
+          <div v-for="(click, i) in group" :key="i" class="flex flex-wrap items-center justify-between gap-1" :style="{ padding: '14px 0', borderBottom: i < group.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
             <div class="flex items-center gap-3">
               <span style="font-size: 14px; font-weight: 500; color: var(--dash-text-primary);">{{ click.text || 'Link click' }}</span>
               <span v-if="click.linkTo" style="font-size: 14px; color: var(--dash-text-ghost);">→ {{ click.linkTo }}</span>
@@ -26,8 +26,8 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/clicks?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/clicks?days=${period.value}`, { watch: [period, refreshKey] })
 
 const grouped = computed(() => {
   const results = (data.value as any)?.results ?? []

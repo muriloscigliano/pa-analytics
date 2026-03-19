@@ -15,8 +15,8 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/web-vitals?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/web-vitals?days=${period.value}`, { watch: [period, refreshKey] })
 function getVital(label: string, value: number | null) {
   if (value === null) return { status: 'No data', pillClass: 'pill-neutral' }
   const t: Record<string, [number, number]> = { FCP: [1800, 3000], LCP: [2500, 4000], CLS: [0.1, 0.25], INP: [200, 500] }

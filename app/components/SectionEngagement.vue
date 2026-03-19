@@ -48,8 +48,8 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/sections?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/sections?days=${period.value}`, { watch: [period, refreshKey] })
 const grouped = computed(() => {
   const results = (data.value as any)?.results ?? []
   const max = results[0]?.[2] || 1

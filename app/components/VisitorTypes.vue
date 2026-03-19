@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/visitor-types?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/visitor-types?days=${period.value}`, { watch: [period, refreshKey] })
 const visitors = computed(() => ((data.value as any)?.results ?? []).map(([type, pageviews, users, clicks, sectionsViewed]: [string, number, number, number, number]) => ({ type, pageviews, users, clicks, sectionsViewed })))
 </script>

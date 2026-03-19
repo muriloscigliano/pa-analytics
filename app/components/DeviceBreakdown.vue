@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-const period = usePeriod()
-const { data, pending, error, refresh } = useFetch(() => `/api/posthog/devices?days=${period.value}`, { watch: [period] })
+const { period, refreshKey } = usePeriod()
+const { data, pending, error, refresh } = useFetch(() => `/api/posthog/devices?days=${period.value}`, { watch: [period, refreshKey] })
 const devices = computed(() => ((data.value as any)?.results ?? []).map(([device, browser, os, pageviews, users]: [string, string, string, number, number]) => ({ device, browser, os, pageviews, users })))
 </script>

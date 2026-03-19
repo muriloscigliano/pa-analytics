@@ -9,7 +9,7 @@
           <p class="hidden sm:block" style="font-size: 14px; color: var(--dash-text-muted); margin-top: 4px;">Conversion tracking &amp; visitor behaviour</p>
         </div>
       </div>
-      <!-- Period + theme toggle -->
+      <!-- Period + refresh + theme toggle -->
       <div class="flex items-center gap-2 flex-wrap">
         <button
           v-for="opt in periods"
@@ -27,6 +27,24 @@
           {{ opt.label }}
         </button>
         <div class="hidden sm:block" style="width: 1px; height: 24px; background: var(--dash-border-card); margin: 0 4px;" />
+        <!-- Refresh button -->
+        <button
+          @click="refreshAll"
+          :style="{
+            display: 'flex', alignItems: 'center', gap: '6px',
+            padding: '6px 12px', borderRadius: '100px', cursor: 'pointer',
+            border: '1px solid var(--dash-border-card)',
+            background: refreshing ? 'rgba(196, 52, 58, 0.1)' : 'var(--dash-bg-inset)',
+            color: refreshing ? '#C4343A' : 'var(--dash-text-body)',
+            fontSize: '14px', fontWeight: 500,
+            fontFamily: 'var(--pa-font-body)',
+          }"
+          :disabled="refreshing"
+        >
+          <svg class="w-4 h-4" :class="{ 'animate-spin': refreshing }" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+          <span class="hidden sm:inline">{{ refreshing ? 'Refreshing...' : 'Refresh' }}</span>
+        </button>
+        <!-- Theme toggle -->
         <button
           @click="toggleTheme"
           :style="{
@@ -45,6 +63,10 @@
         </button>
       </div>
     </div>
+    <!-- Last updated -->
+    <p v-if="lastUpdated" class="mt-3 sm:mt-2 sm:text-right" style="font-size: 14px; color: var(--dash-text-ghost);">
+      Last updated: {{ lastUpdated }}
+    </p>
   </div>
 </template>
 
@@ -53,6 +75,28 @@ const theme = inject<Ref<string>>('theme')!
 const toggleTheme = inject<() => void>('toggleTheme')!
 const period = inject<Ref<number>>('period')!
 const setPeriod = inject<(days: number) => void>('setPeriod')!
+
+const refreshing = ref(false)
+const lastUpdated = ref('')
+
+function updateTimestamp() {
+  lastUpdated.value = new Date().toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })
+}
+
+async function refreshAll() {
+  refreshing.value = true
+  // Trigger re-fetch by bumping a refresh key
+  const refreshKey = useState<number>('refreshKey', () => 0)
+  refreshKey.value++
+  // Wait a moment for all fetches to fire
+  await new Promise(resolve => setTimeout(resolve, 2000))
+  updateTimestamp()
+  refreshing.value = false
+}
+
+onMounted(() => {
+  updateTimestamp()
+})
 
 const periods = [
   { label: '7d', value: 7 },
