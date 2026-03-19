@@ -1,0 +1,221 @@
+/* ══════════════════════════════════════════════════════════════════
+   Dashboard — Black, red, grays only. No hover. Min font: 14px.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Theme colors ── */
+:root {
+  --dash-text-primary: #e0e0e2;
+  --dash-text-body: #b0b0b4;
+  --dash-text-muted: #777;
+  --dash-text-faint: #555;
+  --dash-text-ghost: #444;
+  --dash-bg-inset: #151517;
+  --dash-border-row: #1f1f22;
+  --dash-border-card: #2a2a2c;
+}
+
+/* ── Help text below titles ── */
+.dash-help {
+  font-size: 14px;
+  color: #777;
+  margin-top: -16px;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* ── Card ── */
+.dash-card {
+  background: #1a1a1c;
+  border: 1px solid #2a2a2c;
+  border-radius: 24px;
+  padding: 32px 36px;
+}
+
+/* ── Section heading ── */
+.dash-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #c8c8cc;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+/* ── KPI card ── */
+.kpi-card {
+  background: #1a1a1c;
+  border: 1px solid #2a2a2c;
+  border-radius: 24px;
+  padding: 28px 32px;
+}
+
+.kpi-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.kpi-value {
+  font-size: 48px;
+  font-weight: 700;
+  color: #e0e0e2;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  margin-top: 14px;
+  line-height: 1;
+}
+
+.kpi-subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-top: 8px;
+}
+
+/* ── Pills ── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.pill-neutral {
+  background: #222224;
+  color: #888;
+}
+
+.pill-success {
+  background: #1a2a1e;
+  color: #5a8a60;
+}
+
+.pill-warning {
+  background: #2a2a1a;
+  color: #8a8a50;
+}
+
+.pill-danger {
+  background: rgba(196, 52, 58, 0.1);
+  color: #C4343A;
+}
+
+.pill-info {
+  background: #222224;
+  color: #888;
+}
+
+/* ── Progress bar ── */
+.progress-track {
+  height: 4px;
+  background: #222224;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #C4343A;
+}
+
+/* ── Skeleton ── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1c 25%, #222224 50%, #1a1a1c 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 6px;
+}
+
+/* ── Stat row ── */
+.stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border: 1px solid #2a2a2c;
+  border-radius: 8px;
+}
+
+/* ── Icon circle ── */
+.icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #222224;
+}
+
+/* ── Tabular numbers ── */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Section spacing ── */
+.section-gap {
+  margin-bottom: 28px;
+}
+
+/* ── Grid gap ── */
+.dash-gap {
+  gap: 24px;
+}
+
+/* ── Metrics grid ── */
+.metrics-grid {
+  gap: 24px;
+}
+
+/* ── Table overrides ── */
+.table-container {
+  background: #1a1a1c;
+  border: 1px solid #2a2a2c;
+  border-radius: 24px;
+}
+
+.modern-table thead {
+  background: #151517;
+}
+
+.modern-table th {
+  padding: 16px 24px;
+  font-size: 14px;
+  color: #555;
+  border-bottom: 1px solid #2a2a2c;
+}
+
+.modern-table td {
+  padding: 18px 24px;
+  font-size: 14px;
+  color: #b0b0b4;
+}
+
+.modern-table tbody tr {
+  border-bottom: 1px solid #1f1f22;
+}
+
+.modern-table tbody tr:hover {
+  background: transparent;
+}
+
+/* ── Dropoff label ── */
+.dropoff-label {
+  font-size: 14px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}

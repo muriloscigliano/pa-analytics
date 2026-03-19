@@ -1,0 +1,113 @@
+/**
+ * Typography tokens.
+ * Auto-generated from tokens/tier2-semantic/typography.json
+ */
+
+:root {
+
+  /* ── typography.body.large ── */
+  --pa-typography-body-large-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-body-large-fontSize: var(--pa-font-size-200);
+  --pa-typography-body-large-fontWeight: var(--pa-font-weight-400);
+  --pa-typography-body-large-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-body-large-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.body.medium ── */
+  --pa-typography-body-medium-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-body-medium-fontSize: var(--pa-font-size-100);
+  --pa-typography-body-medium-fontWeight: var(--pa-font-weight-400);
+  --pa-typography-body-medium-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-body-medium-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.body.small ── */
+  --pa-typography-body-small-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-body-small-fontSize: var(--pa-font-size-75);
+  --pa-typography-body-small-fontWeight: var(--pa-font-weight-400);
+  --pa-typography-body-small-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-body-small-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.body.xsmall ── */
+  --pa-typography-body-xsmall-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-body-xsmall-fontSize: var(--pa-font-size-50);
+  --pa-typography-body-xsmall-fontWeight: var(--pa-font-weight-400);
+  --pa-typography-body-xsmall-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-body-xsmall-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.caption.fontFamily ── */
+  --pa-typography-caption-fontFamily: var(--pa-font-family-roboto);
+
+  /* ── typography.caption.fontSize ── */
+  --pa-typography-caption-fontSize: var(--pa-font-size-75);
+
+  /* ── typography.caption.fontWeight ── */
+  --pa-typography-caption-fontWeight: var(--pa-font-weight-400);
+
+  /* ── typography.caption.letterSpacing ── */
+  --pa-typography-caption-letterSpacing: var(--pa-letter-spacing-200);
+
+  /* ── typography.caption.lineHeight ── */
+  --pa-typography-caption-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.heading.h1 ── */
+  --pa-typography-heading-h1-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-heading-h1-fontSize: var(--pa-font-size-900);
+  --pa-typography-heading-h1-fontWeight: var(--pa-font-weight-700);
+  --pa-typography-heading-h1-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-heading-h1-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.heading.h2 ── */
+  --pa-typography-heading-h2-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-heading-h2-fontSize: var(--pa-font-size-800);
+  --pa-typography-heading-h2-fontWeight: var(--pa-font-weight-700);
+  --pa-typography-heading-h2-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-heading-h2-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.heading.h3 ── */
+  --pa-typography-heading-h3-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-heading-h3-fontSize: var(--pa-font-size-700);
+  --pa-typography-heading-h3-fontWeight: var(--pa-font-weight-600);
+  --pa-typography-heading-h3-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-heading-h3-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.heading.h4 ── */
+  --pa-typography-heading-h4-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-heading-h4-fontSize: var(--pa-font-size-600);
+  --pa-typography-heading-h4-fontWeight: var(--pa-font-weight-600);
+  --pa-typography-heading-h4-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-heading-h4-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.heading.h5 ── */
+  --pa-typography-heading-h5-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-heading-h5-fontSize: var(--pa-font-size-500);
+  --pa-typography-heading-h5-fontWeight: var(--pa-font-weight-600);
+  --pa-typography-heading-h5-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-heading-h5-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.heading.h6 ── */
+  --pa-typography-heading-h6-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-heading-h6-fontSize: var(--pa-font-size-400);
+  --pa-typography-heading-h6-fontWeight: var(--pa-font-weight-600);
+  --pa-typography-heading-h6-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-heading-h6-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.label.large ── */
+  --pa-typography-label-large-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-label-large-fontSize: var(--pa-font-size-200);
+  --pa-typography-label-large-fontWeight: var(--pa-font-weight-500);
+  --pa-typography-label-large-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-label-large-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.label.medium ── */
+  --pa-typography-label-medium-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-label-medium-fontSize: var(--pa-font-size-100);
+  --pa-typography-label-medium-fontWeight: var(--pa-font-weight-500);
+  --pa-typography-label-medium-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-label-medium-lineHeight: var(--pa-line-height-200);
+
+  /* ── typography.label.small ── */
+  --pa-typography-label-small-fontFamily: var(--pa-font-family-roboto);
+  --pa-typography-label-small-fontSize: var(--pa-font-size-75);
+  --pa-typography-label-small-fontWeight: var(--pa-font-weight-500);
+  --pa-typography-label-small-letterSpacing: var(--pa-letter-spacing-200);
+  --pa-typography-label-small-lineHeight: var(--pa-line-height-200);
+}

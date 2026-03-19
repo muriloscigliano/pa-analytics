@@ -1,0 +1,75 @@
+/**
+ * Foundation tokens (semantic aliases).
+ * Auto-generated from tokens/tier2-semantic/foundation.json
+ */
+
+:root {
+
+  /* ── animation-semantic ── */
+  --pa-animation-semantic-duration-fast: var(--pa-animation-duration-fast);
+  --pa-animation-semantic-duration-normal: var(--pa-animation-duration-normal);
+  --pa-animation-semantic-duration-slow: var(--pa-animation-duration-slow);
+  --pa-animation-semantic-easing-default: var(--pa-animation-easing-standard);
+  --pa-animation-semantic-easing-enter: var(--pa-animation-easing-decelerate);
+  --pa-animation-semantic-easing-exit: var(--pa-animation-easing-accelerate);
+
+  /* ── border ── */
+  --pa-border-radius-large: var(--pa-border-radius-200);
+  --pa-border-radius-medium: var(--pa-border-radius-100);
+  --pa-border-radius-small: var(--pa-border-radius-50);
+  --pa-border-width-medium: var(--pa-border-width-100);
+  --pa-border-width-thick: var(--pa-border-width-300);
+  --pa-border-width-thin: var(--pa-border-width-50);
+
+  /* ── elevation-semantic ── */
+  --pa-elevation-semantic-floating: var(--pa-elevation-4);
+  --pa-elevation-semantic-modal: var(--pa-elevation-16);
+  --pa-elevation-semantic-none: var(--pa-elevation-0);
+  --pa-elevation-semantic-overlay: var(--pa-elevation-8);
+  --pa-elevation-semantic-popover: var(--pa-elevation-24);
+  --pa-elevation-semantic-raised: var(--pa-elevation-2);
+
+  /* ── font ── */
+  --pa-font-size-lg: var(--pa-font-size-200);
+  --pa-font-size-md: var(--pa-font-size-100);
+  --pa-font-size-sm: var(--pa-font-size-75);
+  --pa-font-size-xl: var(--pa-font-size-400);
+  --pa-font-size-xs: var(--pa-font-size-50);
+  --pa-font-weight-bold: var(--pa-font-weight-700);
+  --pa-font-weight-medium: var(--pa-font-weight-500);
+  --pa-font-weight-regular: var(--pa-font-weight-400);
+  --pa-font-weight-semibold: var(--pa-font-weight-600);
+
+  /* ── icon ── */
+  --pa-icon-size-2xl: var(--pa-icon-size-500);
+  --pa-icon-size-lg: var(--pa-icon-size-300);
+  --pa-icon-size-md: var(--pa-icon-size-200);
+  --pa-icon-size-sm: var(--pa-icon-size-150);
+  --pa-icon-size-xl: var(--pa-icon-size-400);
+  --pa-icon-size-xs: var(--pa-icon-size-100);
+
+  /* ── opacity-semantic ── */
+  --pa-opacity-semantic-backdrop: var(--pa-opacity-80);
+  --pa-opacity-semantic-disabled: var(--pa-opacity-50);
+  --pa-opacity-semantic-hover-overlay: var(--pa-opacity-10);
+  --pa-opacity-semantic-subtle: var(--pa-opacity-60);
+
+  /* ── shadow ── */
+  --pa-shadow-lg: 4px 4px 30px 5px rgba(97, 97, 97, 0.25);
+  --pa-shadow-md: 4px 12px 16px 0px rgba(0, 0, 0, 0.15);
+  --pa-shadow-sm: 0px 4px 4px 0px rgba(97, 97, 97, 0.3);
+
+  /* ── spacing ── */
+  --pa-spacing-100: var(--pa-spacing-8);
+  --pa-spacing-150: var(--pa-spacing-12);
+  --pa-spacing-200: var(--pa-spacing-16);
+  --pa-spacing-25: var(--pa-spacing-2);
+  --pa-spacing-250: var(--pa-spacing-18);
+  --pa-spacing-300: var(--pa-spacing-24);
+  --pa-spacing-400: var(--pa-spacing-32);
+  --pa-spacing-450: var(--pa-spacing-36);
+  --pa-spacing-50: var(--pa-spacing-4);
+  --pa-spacing-500: var(--pa-spacing-48);
+  --pa-spacing-600: var(--pa-spacing-56);
+  --pa-spacing-700: var(--pa-spacing-64);
+}

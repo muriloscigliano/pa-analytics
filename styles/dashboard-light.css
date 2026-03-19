@@ -1,0 +1,116 @@
+/* ══════════════════════════════════════════════════════════════════
+   Dashboard — Light theme overrides
+   ══════════════════════════════════════════════════════════════════ */
+
+[data-theme="light"] {
+  background-color: #f5f5f7 !important;
+  color: #333 !important;
+  --dash-text-primary: #1a1a1c;
+  --dash-text-body: #333;
+  --dash-text-muted: #888;
+  --dash-text-faint: #999;
+  --dash-text-ghost: #aaa;
+  --dash-bg-inset: #f0f0f2;
+  --dash-border-row: #e8e8ea;
+  --dash-border-card: #e0e0e2;
+}
+
+[data-theme="light"] .dash-card {
+  background: #fff;
+  border-color: #e0e0e2;
+}
+
+[data-theme="light"] .kpi-card {
+  background: #fff;
+  border-color: #e0e0e2;
+}
+
+[data-theme="light"] .table-container {
+  background: #fff;
+  border-color: #e0e0e2;
+}
+
+[data-theme="light"] .dash-title {
+  color: #333;
+}
+
+[data-theme="light"] .dash-help {
+  color: #888;
+}
+
+[data-theme="light"] .kpi-label {
+  color: #888;
+}
+
+[data-theme="light"] .kpi-value {
+  color: #1a1a1c;
+}
+
+[data-theme="light"] .kpi-subtitle {
+  color: #999;
+}
+
+/* Pills */
+[data-theme="light"] .pill-neutral {
+  background: #f0f0f2;
+  color: #666;
+}
+
+[data-theme="light"] .pill-success {
+  background: #e5f9ed;
+  color: #1a7f37;
+}
+
+[data-theme="light"] .pill-warning {
+  background: #fff8e6;
+  color: #b25e09;
+}
+
+[data-theme="light"] .pill-danger {
+  background: #ffe8e8;
+  color: #C4343A;
+}
+
+/* Progress */
+[data-theme="light"] .progress-track {
+  background: #e8e8ea;
+}
+
+/* Stat row */
+[data-theme="light"] .stat-row {
+  border-color: #e0e0e2;
+}
+
+/* Icon circle */
+[data-theme="light"] .icon-circle {
+  background: #f0f0f2;
+}
+
+/* Tables */
+[data-theme="light"] .modern-table thead {
+  background: #fafafa;
+}
+
+[data-theme="light"] .modern-table th {
+  color: #888;
+  border-bottom-color: #e0e0e2;
+}
+
+[data-theme="light"] .modern-table td {
+  color: #333;
+}
+
+[data-theme="light"] .modern-table tbody tr {
+  border-bottom-color: #f0f0f2;
+}
+
+/* Skeleton */
+[data-theme="light"] .skeleton {
+  background: linear-gradient(90deg, #f0f0f2 25%, #e8e8ea 50%, #f0f0f2 75%);
+  background-size: 200% 100%;
+}
+
+/* Dropoff */
+[data-theme="light"] .dropoff-label {
+  color: #999;
+}

@@ -1,0 +1,160 @@
+/**
+ * Dark mode overrides for semantic tokens.
+ * Auto-generated from tokens/tier2-semantic/pay-advantage-dark.json
+ * Pairs with tokens-semantic.css (light mode defaults).
+ */
+
+[data-bs-theme="dark"] {
+
+  /* ── Brand ── */
+  --pa-brand-primary: #D51E33;
+  --pa-brand-primary-active: #CA2134;
+  --pa-brand-primary-hover: #f75e5e;
+
+  /* ── Text ── */
+  --pa-color-text-disabled: #555555;
+  --pa-color-text-muted: #868E96;
+  --pa-color-text-placeholder: #6C757D;
+  --pa-color-text-primary: #E8EAED;
+  --pa-color-text-secondary: #ADB5BD;
+
+  /* ── Backgrounds ── */
+  --pa-color-bg-active: #404040;
+  --pa-color-bg-card: #1E1E1E;
+  --pa-color-bg-disabled: #2A2A2A;
+  --pa-color-bg-hover: #2D2D2D;
+  --pa-color-bg-hover-subtle: #2A2A2A;
+  --pa-color-bg-input: #2A2A2A;
+  --pa-color-bg-page: #121212;
+  --pa-color-bg-pagination: #2A2A2A;
+  --pa-color-bg-selected: #333333;
+
+  /* ── Borders ── */
+  --pa-color-border-default: #3A3A3A;
+  --pa-color-border-disabled: #3A3A3A;
+  --pa-color-border-focus: #D51E33;
+  --pa-color-border-hover: #4A4A4A;
+  --pa-color-border-input: #404040;
+  --pa-color-border-light: #2D2D2D;
+
+  /* ── Status: Success ── */
+  --pa-color-success-bg: #1A3A24;
+  --pa-color-success-border: #2D5A3A;
+  --pa-color-success: #57b86e;
+  --pa-color-success-text: #77d08c;
+
+  /* ── Status: Warning ── */
+  --pa-color-warning-bg: #3A3520;
+  --pa-color-warning-border: #5A5030;
+  --pa-color-warning: #fafa5c;
+  --pa-color-warning-text: #fcfc8b;
+
+  /* ── Status: Danger ── */
+  --pa-color-danger-bg: #3A1A1A;
+  --pa-color-danger-border: #5A2D2D;
+  --pa-color-danger: #f75e5e;
+  --pa-color-danger-hover-bg: #3A1A1A;
+  --pa-color-danger-text: #f98c8c;
+
+  /* ── Status: Info ── */
+  --pa-color-info-bg: #1A1A3A;
+  --pa-color-info-border: #3A3A5A;
+  --pa-color-info: #8077da;
+  --pa-color-info-text: #a59fe6;
+
+  /* ── Payment Method: PayID ── */
+  --pa-color-payid-bg: #1A1A3A;
+  --pa-color-payid-border: #3A3A5A;
+  --pa-color-payid-icon: #8077da;
+  --pa-color-payid-text: #a59fe6;
+
+  /* ── Payment Method: PayTo ── */
+  --pa-color-payto-bg: #1A3A24;
+  --pa-color-payto-border: #2D5A3A;
+  --pa-color-payto-icon: #57b86e;
+  --pa-color-payto-text: #77d08c;
+
+  /* ── Payment Method: BPAY ── */
+  --pa-color-bpay-bg: #3A3520;
+  --pa-color-bpay-border: #5A5030;
+  --pa-color-bpay-icon: #fafa5c;
+  --pa-color-bpay-text: #fcfc8b;
+
+  /* ── Surfaces (dark / sidebar) ── */
+  --pa-color-surface-dark-hover: rgba(255, 255, 255, 0.08);
+
+  /* ── Button variant colors ── */
+  --pa-color-btn-danger: #f75e5e;
+  --pa-color-btn-danger-active: #f42f2f;
+  --pa-color-btn-danger-hover: #f98c8c;
+  --pa-color-btn-dark: #E8EAED;
+  --pa-color-btn-dark-hover: #3D3D3D;
+  --pa-color-btn-info: #8077da;
+  --pa-color-btn-info-hover: #a59fe6;
+  --pa-color-btn-success: #57b86e;
+  --pa-color-btn-success-hover: #77d08c;
+  --pa-color-btn-warning: #fafa5c;
+  --pa-color-btn-warning-hover: #fcfc8b;
+
+  /* ── StatusBadge pill variants ── */
+  --pa-color-pill-blue-bg: #1A1A3A;
+  --pa-color-pill-blue-border: #3A3A5A;
+  --pa-color-pill-blue-text: #a59fe6;
+  --pa-color-pill-gray-bg: #2A2A2A;
+  --pa-color-pill-gray-border: #4A4A4A;
+  --pa-color-pill-gray-text: #9CA3AF;
+  --pa-color-pill-green-bg: #1A3A24;
+  --pa-color-pill-green-border: #2D5A3A;
+  --pa-color-pill-green-text: #77d08c;
+  --pa-color-pill-red-bg: #3A1A1A;
+  --pa-color-pill-red-border: #5A2D2D;
+  --pa-color-pill-red-text: #f98c8c;
+  --pa-color-pill-yellow-bg: #3A3520;
+  --pa-color-pill-yellow-border: #5A5030;
+  --pa-color-pill-yellow-text: #fcfc8b;
+
+  /* ── Scrollbar ── */
+  --pa-color-scrollbar-thumb: #4A4A4A;
+  --pa-color-scrollbar-thumb-hover: #555555;
+
+  /* ── Overlays ── */
+  --pa-color-overlay-brand: rgba(213, 30, 51, 0.12);
+  --pa-color-overlay-brand-intense: rgba(213, 30, 51, 0.45);
+  --pa-color-overlay-brand-medium: rgba(213, 30, 51, 0.18);
+  --pa-color-overlay-brand-strong: rgba(213, 30, 51, 0.30);
+  --pa-color-overlay-heavy: rgba(255, 255, 255, 0.15);
+  --pa-color-overlay-light: rgba(255, 255, 255, 0.05);
+  --pa-color-overlay-medium: rgba(255, 255, 255, 0.08);
+
+  /* ── Form labels ── */
+  --pa-color-label: #9CA3AF;
+
+  /* ── Metrics ── */
+  --pa-color-metric-negative-bg: #3A1A1A;
+  --pa-color-metric-positive-bg: #1A3A24;
+  --pa-color-metric-positive-text: #77d08c;
+
+  /* ── Focus ring ── */
+  --pa-color-focus-ring: #A78BFA;
+
+  /* ── Canvas ── */
+  --pa-color-canvas-stroke: #E8EAED;
+
+  /* ── Shadows ── */
+  --pa-shadow-card: 0 2px 6px rgba(0, 0, 0, 0.2);
+  --pa-shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --pa-shadow-drawer: -4px 0 24px rgba(0, 0, 0, 0.5);
+  --pa-shadow-dropdown: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --pa-shadow-focus-brand: 0 0 0 3px rgba(213, 30, 51, 0.25);
+  --pa-shadow-focus-ring: 0 0 0 3px rgba(167, 139, 250, 0.35);
+  --pa-shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  --pa-shadow-modal: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --pa-shadow-modal-heavy: 0 12px 40px rgba(0, 0, 0, 0.6);
+  --pa-shadow-popover: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --pa-shadow-toast: 0 4px 24px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
+  --pa-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+  /* ── Backdrop / Overlay ── */
+  --pa-backdrop-default: rgba(0, 0, 0, 0.7);
+  --pa-backdrop-light: rgba(0, 0, 0, 0.5);
+}

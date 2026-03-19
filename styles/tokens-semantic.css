@@ -1,0 +1,286 @@
+/**
+ * Semantic design tokens.
+ * Auto-generated from tokens/tier2-semantic/pay-advantage-light.json
+ * Maps primitive tokens from tokens.css to meaningful names.
+ * Use these in components instead of hardcoded hex values.
+ */
+
+:root {
+
+  /* ── Brand ── */
+  --pa-brand-primary: #C4343A;
+  --pa-brand-primary-active: #B02E33;
+  --pa-brand-primary-hover: #D93E44;
+
+  /* ── Text ── */
+  --pa-color-text-disabled: #868E96;
+  --pa-color-text-inverse: #FFFFFF;
+  --pa-color-text-muted: #6E757C;
+  --pa-color-text-placeholder: #ADB5BD;
+  --pa-color-text-primary: #0D1018;
+  --pa-color-text-secondary: #495057;
+
+  /* ── Backgrounds ── */
+  --pa-color-bg-active: var(--pa-gray-400);
+  --pa-color-bg-card: var(--pa-gray-white);
+  --pa-color-bg-disabled: var(--pa-gray-200);
+  --pa-color-bg-hover: #F0F0F2;
+  --pa-color-bg-hover-subtle: #F5F6F7;
+  --pa-color-bg-input: var(--pa-gray-100);
+  --pa-color-bg-page: var(--pa-gray-100);
+  --pa-color-bg-pagination: #F8F8F8;
+  --pa-color-bg-selected: #F1F3F5;
+
+  /* ── Borders ── */
+  --pa-color-border-default: var(--pa-gray-300);
+  --pa-color-border-disabled: var(--pa-gray-300);
+  --pa-color-border-focus: #C4343A;
+  --pa-color-border-hover: #D1D5DB;
+  --pa-color-border-input: #DFE2E6;
+  --pa-color-border-light: #EAECEF;
+
+  /* ── Status: Success ── */
+  --pa-color-success-bg: #E5F9ED;
+  --pa-color-success-border: #BBF0CA;
+  --pa-color-success: var(--pa-green-500);
+  --pa-color-success-text: #1A7F37;
+
+  /* ── Status: Warning ── */
+  --pa-color-warning-bg: #FFF8E6;
+  --pa-color-warning-border: #FFE0A5;
+  --pa-color-warning: #F59E0B;
+  --pa-color-warning-text: #B25E09;
+
+  /* ── Status: Danger ── */
+  --pa-color-danger-bg: #FFE8E8;
+  --pa-color-danger-border: #FED7D7;
+  --pa-color-danger: #C4343A;
+  --pa-color-danger-hover-bg: #FFF5F5;
+  --pa-color-danger-text: #C4343A;
+
+  /* ── Status: Info ── */
+  --pa-color-info-bg: #F0F7FF;
+  --pa-color-info-border: #C2DFFF;
+  --pa-color-info: #0969DA;
+  --pa-color-info-text: #1A5DAB;
+
+  /* ── Payment Method: PayID ── */
+  --pa-color-payid-bg: #F0F7FF;
+  --pa-color-payid-border: #C2DFFF;
+  --pa-color-payid-icon: #2B7DE9;
+  --pa-color-payid-text: #1A5DAB;
+
+  /* ── Payment Method: PayTo ── */
+  --pa-color-payto-bg: #F0FFF4;
+  --pa-color-payto-border: #BBF0CA;
+  --pa-color-payto-icon: #38A151;
+  --pa-color-payto-text: #1A7A3A;
+
+  /* ── Payment Method: BPAY ── */
+  --pa-color-bpay-bg: #FFF8F0;
+  --pa-color-bpay-border: #FFD6A5;
+  --pa-color-bpay-icon: #D48B00;
+  --pa-color-bpay-text: #8B5E00;
+
+  /* ── Surfaces (dark / sidebar) ── */
+  --pa-color-surface-dark: #000000;
+  --pa-color-surface-dark-elevated: #1A1A1A;
+  --pa-color-surface-dark-hover: rgba(255, 255, 255, 0.05);
+
+  /* ── Sidebar ── */
+  --pa-sidebar-bg-active: rgba(255, 255, 255, 0.15);
+  --pa-sidebar-bg-subtle: rgba(255, 255, 255, 0.08);
+  --pa-sidebar-border: rgba(255, 255, 255, 0.1);
+  --pa-sidebar-brand-active: rgba(196, 52, 58, 0.15);
+  --pa-sidebar-brand-glow: rgba(196, 52, 58, 0.3);
+  --pa-sidebar-brand-hover: rgba(196, 52, 58, 0.12);
+  --pa-sidebar-brand-subtle: rgba(196, 52, 58, 0.08);
+  --pa-sidebar-text: #FFFFFF;
+  --pa-sidebar-text-secondary: rgba(255, 255, 255, 0.6);
+  --pa-sidebar-text-tertiary: rgba(255, 255, 255, 0.4);
+
+  /* ── Button variant colors ── */
+  --pa-color-btn-danger: #DC2626;
+  --pa-color-btn-danger-active: #991B1B;
+  --pa-color-btn-danger-hover: #B91C1C;
+  --pa-color-btn-dark: #212529;
+  --pa-color-btn-dark-hover: #2D2D2D;
+  --pa-color-btn-info: #228BE6;
+  --pa-color-btn-info-hover: #1C7ED6;
+  --pa-color-btn-success: #40C057;
+  --pa-color-btn-success-hover: #37B24D;
+  --pa-color-btn-warning: #FAB005;
+  --pa-color-btn-warning-hover: #F59F00;
+
+  /* ── StatusBadge pill variants ── */
+  --pa-color-pill-blue-bg: #E3F2FD;
+  --pa-color-pill-blue-border: #90CAF9;
+  --pa-color-pill-blue-text: #1565C0;
+  --pa-color-pill-gray-bg: #F3F4F6;
+  --pa-color-pill-gray-border: #D1D5DB;
+  --pa-color-pill-gray-text: #6B7280;
+  --pa-color-pill-green-bg: #D4F0E1;
+  --pa-color-pill-green-border: #7FD49E;
+  --pa-color-pill-green-text: #38A151;
+  --pa-color-pill-red-bg: #FFEAEA;
+  --pa-color-pill-red-border: #F98A8A;
+  --pa-color-pill-red-text: #F42F2F;
+  --pa-color-pill-yellow-bg: #FFF8E5;
+  --pa-color-pill-yellow-border: #E8C85A;
+  --pa-color-pill-yellow-text: #D4A017;
+
+  /* ── Scrollbar ── */
+  --pa-color-scrollbar-thumb: var(--pa-gray-300);
+  --pa-color-scrollbar-thumb-hover: var(--pa-gray-400);
+
+  /* ── Overlays ── */
+  --pa-color-overlay-brand: rgba(196, 52, 58, 0.08);
+  --pa-color-overlay-brand-intense: rgba(196, 52, 58, 0.4);
+  --pa-color-overlay-brand-medium: rgba(196, 52, 58, 0.15);
+  --pa-color-overlay-brand-strong: rgba(196, 52, 58, 0.25);
+  --pa-color-overlay-heavy: rgba(0, 0, 0, 0.25);
+  --pa-color-overlay-light: rgba(0, 0, 0, 0.05);
+  --pa-color-overlay-medium: rgba(0, 0, 0, 0.1);
+
+  /* ── Form labels ── */
+  --pa-color-label: #6B6B7A;
+
+  /* ── Metrics ── */
+  --pa-color-metric-negative-bg: #FFD1D1;
+  --pa-color-metric-positive-bg: #ADFFD1;
+  --pa-color-metric-positive-text: #5DB182;
+
+  /* ── Focus ring ── */
+  --pa-color-focus-ring: #7C3AED;
+
+  /* ── Canvas ── */
+  --pa-color-canvas-stroke: #0D1018;
+
+  /* ── Shadows ── */
+  --pa-shadow-card: 0 2px 6px rgba(0, 0, 0, 0.05);
+  --pa-shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --pa-shadow-drawer: -4px 0 24px rgba(0, 0, 0, 0.15);
+  --pa-shadow-dropdown: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --pa-shadow-focus-brand: 0 0 0 3px rgba(196, 52, 58, 0.15);
+  --pa-shadow-focus-ring: 0 0 0 3px rgba(124, 58, 237, 0.25);
+  --pa-shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  --pa-shadow-modal: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --pa-shadow-modal-heavy: 0 12px 40px rgba(0, 0, 0, 0.25);
+  --pa-shadow-popover: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --pa-shadow-toast: 0 4px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --pa-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  /* ── Z-Index ── */
+  --pa-z-base: 0;
+  --pa-z-drawer: 1000;
+  --pa-z-dropdown: 100;
+  --pa-z-header: 500;
+  --pa-z-modal: 1100;
+  --pa-z-overlay: 900;
+  --pa-z-raised: 1;
+  --pa-z-sticky: 200;
+  --pa-z-toast: 1200;
+  --pa-z-tooltip: 1300;
+
+  /* ── Transitions ── */
+  --pa-transition-fast: 0.15s ease;
+  --pa-transition-normal: 0.2s ease;
+  --pa-transition-slow: 0.3s ease;
+  --pa-transition-slower: 0.4s ease;
+  --pa-transition-spring: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Durations ── */
+  --pa-duration-fast: 0.15s;
+  --pa-duration-normal: 0.2s;
+  --pa-duration-slow: 0.3s;
+  --pa-duration-slower: 0.4s;
+
+  /* ── Easings ── */
+  --pa-easing-default: ease;
+  --pa-easing-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --pa-easing-spring: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Border Radius ── */
+  --pa-radius-2xl: var(--pa-border-radius-250);
+  --pa-radius-2xs: 3px;
+  --pa-radius-3xl: var(--pa-border-radius-300);
+  --pa-radius-3xs: 2px;
+  --pa-radius-full: 50%;
+  --pa-radius-lg: var(--pa-border-radius-200);
+  --pa-radius-md: var(--pa-border-radius-150);
+  --pa-radius-pill: 5000px;
+  --pa-radius-sm: var(--pa-border-radius-100);
+  --pa-radius-xl: var(--pa-border-radius-225);
+  --pa-radius-xs: var(--pa-border-radius-50);
+
+  /* ── Spacing ── */
+  --pa-space-0: 0;
+  --pa-space-1: var(--pa-spacing-2);
+  --pa-space-10: var(--pa-spacing-20);
+  --pa-space-12: var(--pa-spacing-24);
+  --pa-space-14: var(--pa-spacing-28);
+  --pa-space-16: var(--pa-spacing-32);
+  --pa-space-18: var(--pa-spacing-36);
+  --pa-space-2: var(--pa-spacing-4);
+  --pa-space-20: var(--pa-spacing-40);
+  --pa-space-24: var(--pa-spacing-48);
+  --pa-space-28: var(--pa-spacing-56);
+  --pa-space-3: var(--pa-spacing-6);
+  --pa-space-32: var(--pa-spacing-64);
+  --pa-space-4: var(--pa-spacing-8);
+  --pa-space-5: var(--pa-spacing-10);
+  --pa-space-6: var(--pa-spacing-12);
+  --pa-space-7: 14px;
+  --pa-space-8: var(--pa-spacing-16);
+  --pa-space-9: var(--pa-spacing-18);
+
+  /* ── Font Family ── */
+  --pa-font-body: var(--pa-font-family-roboto);
+
+  /* ── Font Size ── */
+  --pa-text-2xl: var(--pa-font-size-400);
+  --pa-text-2xs: var(--pa-font-size-50);
+  --pa-text-3xl: 22px;
+  --pa-text-4xl: var(--pa-font-size-500);
+  --pa-text-5xl: var(--pa-font-size-600);
+  --pa-text-6xl: var(--pa-font-size-700);
+  --pa-text-7xl: var(--pa-font-size-800);
+  --pa-text-8xl: 42px;
+  --pa-text-9xl: var(--pa-font-size-900);
+  --pa-text-base: var(--pa-font-size-100);
+  --pa-text-base-lg: 15px;
+  --pa-text-lg: var(--pa-font-size-200);
+  --pa-text-md: 13px;
+  --pa-text-sm: var(--pa-font-size-75);
+  --pa-text-xl: var(--pa-font-size-250);
+  --pa-text-xs: 11px;
+
+  /* ── Font Weight ── */
+  --pa-weight-black: var(--pa-font-weight-900);
+  --pa-weight-bold: var(--pa-font-weight-700);
+  --pa-weight-extrabold: var(--pa-font-weight-800);
+  --pa-weight-light: var(--pa-font-weight-300);
+  --pa-weight-medium: var(--pa-font-weight-500);
+  --pa-weight-regular: var(--pa-font-weight-400);
+  --pa-weight-semibold: var(--pa-font-weight-600);
+
+  /* ── Opacity ── */
+  --pa-opacity-disabled: 0.5;
+  --pa-opacity-high: 0.9;
+  --pa-opacity-hover: 0.8;
+  --pa-opacity-muted: 0.6;
+  --pa-opacity-subtle: 0.7;
+
+  /* ── Backdrop / Overlay ── */
+  --pa-backdrop-default: rgba(0, 0, 0, 0.5);
+  --pa-backdrop-light: rgba(0, 0, 0, 0.3);
+
+  /* ── AI Accent ── */
+  --pa-ai-primary: #A855F7;
+  --pa-ai-primary-hover: #9333EA;
+  --pa-ai-bg: rgba(168, 85, 247, 0.08);
+  --pa-ai-bg-hover: rgba(168, 85, 247, 0.12);
+  --pa-ai-border: rgba(168, 85, 247, 0.2);
+  --pa-ai-border-strong: rgba(168, 85, 247, 0.35);
+  --pa-ai-gradient: linear-gradient(90deg, #A855F7, #7C3AED);
+}
