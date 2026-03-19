@@ -1,6 +1,6 @@
 <template>
   <div
-    data-bs-theme="dark"
+    :data-bs-theme="theme"
     :data-theme="theme"
     class="min-h-screen"
     :style="{ backgroundColor: theme === 'dark' ? '#111113' : '#f5f5f7', fontFamily: 'var(--pa-font-body)', color: theme === 'dark' ? '#b0b0b4' : '#333' }"
@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-const theme = useState('theme', () => 'dark')
+const theme = useState('theme', () => 'light')
 const period = useState('period', () => 30)
 
 provide('theme', theme)
