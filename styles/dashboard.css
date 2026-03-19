@@ -57,13 +57,14 @@
 }
 
 .kpi-value {
-  font-size: 48px;
+  font-size: clamp(32px, 4vw, 48px);
   font-weight: 700;
   color: #e0e0e2;
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
   margin-top: 14px;
   line-height: 1;
+  word-break: break-word;
 }
 
 .kpi-subtitle {
@@ -218,4 +219,70 @@
   align-items: center;
   gap: 6px;
   margin-top: 6px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   Mobile responsive (max-width: 768px)
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .dash-card {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .kpi-card {
+    padding: 18px 20px;
+    border-radius: 16px;
+  }
+
+  .kpi-value {
+    font-size: clamp(24px, 6vw, 40px);
+  }
+
+  .dash-title {
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+
+  .dash-help {
+    margin-bottom: 16px;
+    margin-top: -10px;
+  }
+
+  .section-gap {
+    margin-bottom: 16px;
+  }
+
+  .dash-gap {
+    gap: 16px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+  }
+
+  .table-container {
+    border-radius: 16px;
+  }
+
+  .modern-table th {
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+
+  .modern-table td {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .stat-row {
+    padding: 12px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

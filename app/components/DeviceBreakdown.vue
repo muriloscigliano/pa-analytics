@@ -5,7 +5,7 @@
     <LoadingSpinner v-if="pending" />
     <ErrorAlert v-else-if="error" :message="error.message" @retry="refresh" />
     <div v-else>
-      <div v-for="(d, i) in devices" :key="i" class="flex items-center justify-between" :style="{ padding: '14px 0', borderBottom: i < devices.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
+      <div v-for="(d, i) in devices" :key="i" class="flex flex-wrap items-center justify-between gap-2" :style="{ padding: '14px 0', borderBottom: i < devices.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
         <div class="flex items-center gap-3">
           <span class="pill pill-neutral">{{ d.device }}</span>
           <span style="font-size: 14px; color: var(--dash-text-body);">{{ d.browser }}</span>

@@ -5,9 +5,9 @@
     <LoadingSpinner v-if="pending" />
     <ErrorAlert v-else-if="error" :message="error.message" @retry="refresh" />
     <div v-else class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      <div v-for="m in metrics" :key="m.label" style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 20px; text-align: center;">
+      <div v-for="m in metrics" :key="m.label" style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 14px; text-align: center;">
         <p style="font-size: 14px; font-weight: 500; color: var(--dash-text-faint); text-transform: uppercase; letter-spacing: 0.06em;">{{ m.label }}</p>
-        <p style="font-size: 28px; font-weight: 700; color: var(--dash-text-primary); margin-top: 10px;" class="tabular-nums">{{ m.display }}</p>
+        <p style="font-size: clamp(18px, 5vw, 28px); font-weight: 700; color: var(--dash-text-primary); margin-top: 10px;" class="tabular-nums">{{ m.display }}</p>
         <span class="pill mt-2" :class="m.pillClass">{{ m.status }}</span>
       </div>
     </div>

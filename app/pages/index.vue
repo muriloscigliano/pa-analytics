@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[1280px] mx-auto px-8 sm:px-12 py-14">
+  <div class="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 py-6 sm:py-14">
     <div class="section-gap"><DashboardHeader /></div>
     <div class="section-gap"><KpiCards /></div>
     <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><FunnelChart /><VisitorTypes /></div>

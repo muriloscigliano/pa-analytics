@@ -8,30 +8,37 @@
       <div v-for="(group, page) in grouped" :key="page" style="margin-bottom: 24px;">
         <p style="font-size: 14px; font-weight: 600; color: var(--dash-text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">{{ page || '/' }}</p>
         <div>
-          <div v-for="(s, i) in group" :key="i" class="flex items-center" :style="{ padding: '14px 0', borderBottom: i < group.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
-            <!-- Rank -->
-            <span style="font-size: 14px; color: var(--dash-text-ghost); min-width: 28px;" class="tabular-nums">{{ i + 1 }}</span>
-            <!-- Section name -->
-            <span style="font-size: 14px; color: var(--dash-text-body); flex: 1;">{{ s.name }}</span>
-            <!-- Bar -->
-            <div style="width: 200px; margin: 0 20px;">
-              <div class="progress-track" style="height: 6px;">
-                <div class="progress-fill" :style="{ width: s.pct + '%' }" />
+          <div v-for="(s, i) in group" :key="i" :style="{ padding: '14px 0', borderBottom: i < group.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
+            <!-- Desktop: single row -->
+            <div class="hidden sm:flex items-center">
+              <span style="font-size: 14px; color: var(--dash-text-ghost); min-width: 28px;" class="tabular-nums">{{ i + 1 }}</span>
+              <span style="font-size: 14px; color: var(--dash-text-body); flex: 1;">{{ s.name }}</span>
+              <div class="hidden md:block" style="width: 200px; margin: 0 20px;">
+                <div class="progress-track" style="height: 6px;"><div class="progress-fill" :style="{ width: s.pct + '%' }" /></div>
+              </div>
+              <div class="text-right" style="min-width: 70px;">
+                <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ s.views }}</span>
+                <span style="font-size: 14px; color: var(--dash-text-ghost); margin-left: 4px;">views</span>
+              </div>
+              <div class="text-right" style="min-width: 80px;">
+                <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ s.uniqueUsers }}</span>
+                <span style="font-size: 14px; color: var(--dash-text-ghost); margin-left: 4px;">users</span>
+              </div>
+              <div class="text-right" style="min-width: 60px;">
+                <span style="font-size: 14px; color: #C4343A; font-weight: 500;" class="tabular-nums">{{ s.avgPerUser }}x</span>
               </div>
             </div>
-            <!-- Views -->
-            <div class="text-right" style="min-width: 70px;">
-              <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ s.views }}</span>
-              <span style="font-size: 14px; color: var(--dash-text-ghost); margin-left: 4px;">views</span>
-            </div>
-            <!-- Users -->
-            <div class="text-right" style="min-width: 80px;">
-              <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ s.uniqueUsers }}</span>
-              <span style="font-size: 14px; color: var(--dash-text-ghost); margin-left: 4px;">users</span>
-            </div>
-            <!-- Avg views per user -->
-            <div class="text-right" style="min-width: 60px;">
-              <span style="font-size: 14px; color: #C4343A; font-weight: 500;" class="tabular-nums">{{ s.avgPerUser }}x</span>
+            <!-- Mobile: stacked -->
+            <div class="sm:hidden">
+              <div class="flex items-center justify-between mb-2">
+                <span style="font-size: 14px; color: var(--dash-text-body);">{{ s.name }}</span>
+                <span style="font-size: 14px; color: #C4343A; font-weight: 500;" class="tabular-nums">{{ s.avgPerUser }}x</span>
+              </div>
+              <div class="progress-track mb-2" style="height: 4px;"><div class="progress-fill" :style="{ width: s.pct + '%' }" /></div>
+              <div class="flex items-center gap-4" style="font-size: 14px; color: var(--dash-text-faint);">
+                <span><span style="font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ s.views }}</span> views</span>
+                <span><span style="font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ s.uniqueUsers }}</span> users</span>
+              </div>
             </div>
           </div>
         </div>

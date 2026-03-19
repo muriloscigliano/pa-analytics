@@ -5,7 +5,7 @@
     <LoadingSpinner v-if="pending" />
     <ErrorAlert v-else-if="error" :message="error.message" @retry="refresh" />
     <div v-else>
-      <div v-for="(loc, i) in locations" :key="i" class="flex items-center justify-between" :style="{ padding: '14px 0', borderBottom: i < locations.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
+      <div v-for="(loc, i) in locations" :key="i" class="flex flex-wrap items-center justify-between gap-2" :style="{ padding: '14px 0', borderBottom: i < locations.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
         <div class="flex items-center gap-3">
           <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary); min-width: 40px;" class="tabular-nums">{{ i + 1 }}</span>
           <div>

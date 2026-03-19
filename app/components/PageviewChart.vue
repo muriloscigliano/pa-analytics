@@ -4,7 +4,7 @@
     <p class="dash-help">Total page loads per day across all pages. Each point is one day. Includes both new and returning visitors.</p>
     <LoadingSpinner v-if="pending" />
     <ErrorAlert v-else-if="error" :message="error.message" @retry="refresh" />
-    <div v-else class="h-64">
+    <div v-else class="h-48 sm:h-64">
       <ClientOnly>
         <Line :data="chartData" :options="chartOptions" />
       </ClientOnly>
