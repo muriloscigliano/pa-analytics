@@ -5,13 +5,13 @@
     <LoadingSpinner v-if="pending" />
     <ErrorAlert v-else-if="error" :message="error.message" @retry="refresh" />
     <div v-else>
-      <div v-if="sources.length > 0" class="space-y-3">
-        <div v-for="(s, i) in sources" :key="i">
-          <div class="flex items-center justify-between mb-1">
-            <span style="font-size: 14px; color: var(--dash-text-body);">{{ formatSource(s.navSource) }}</span>
-            <div class="flex items-center gap-3">
+      <div v-if="sources.length > 0">
+        <div v-for="(s, i) in sources" :key="i" :style="{ padding: '14px 0', borderBottom: i < sources.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
+          <div class="flex items-center justify-between" style="margin-bottom: 8px;">
+            <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-body);">{{ formatSource(s.navSource) }}</span>
+            <div class="flex items-center gap-4">
               <span style="font-size: 14px; color: var(--dash-text-faint);">{{ s.users }} users</span>
-              <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ s.visits }}</span>
+              <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ s.visits.toLocaleString() }}</span>
             </div>
           </div>
           <div class="progress-track"><div class="progress-fill" :style="{ width: s.pct + '%' }" /></div>
