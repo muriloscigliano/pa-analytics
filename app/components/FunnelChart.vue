@@ -1,7 +1,7 @@
 <template>
   <div class="dash-card">
     <h2 class="dash-title">Conversion Funnel</h2>
-    <p class="dash-help">How visitors move through key steps: landing on a page, viewing a section, then clicking a CTA. The drop-off % shows where people leave.</p>
+    <p class="dash-help">How visitors convert: landing on a page, submitting a form, then completing signup. The drop-off % shows where people leave the funnel.</p>
     <LoadingSpinner v-if="pending" />
     <ErrorAlert v-else-if="error" :message="error.message" @retry="refresh" />
     <div v-else class="space-y-5">

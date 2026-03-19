@@ -27,7 +27,7 @@ export const MOCK = {
   funnel: [
     { action_id: '$pageview', name: '$pageview', custom_name: 'Page View', order: 0, count: 3, type: 'events', average_conversion_time: null, median_conversion_time: null },
     { action_id: 'section_viewed', name: 'section_viewed', custom_name: 'Section Viewed', order: 1, count: 3, type: 'events', average_conversion_time: 435.99, median_conversion_time: 300.15 },
-    { action_id: '$autocapture', name: '$autocapture', custom_name: 'CTA Click', order: 2, count: 1, type: 'events', average_conversion_time: 45.46, median_conversion_time: 45.46 },
+    { action_id: 'signup_completed_server', name: 'signup_completed_server', custom_name: 'Signup Completed', order: 2, count: 0, type: 'events', average_conversion_time: null, median_conversion_time: null },
   ],
 
   sections: {
@@ -86,11 +86,8 @@ export const MOCK = {
   },
 
   trafficSources: {
-    columns: ['referrer', 'visitor_type', 'visits', 'users'],
-    results: [
-      ['localhost:3005', 'returning', 9, 2],
-      ['$direct', 'returning', 4, 1],
-    ],
+    columns: ['nav_source', 'visits', 'users'],
+    results: [],
   },
 
   scrollDepth: {
@@ -121,12 +118,17 @@ export const MOCK = {
   },
 
   formSubmissions: {
-    columns: ['page', 'button_text', 'submissions', 'users'],
+    columns: ['form_type', 'page', 'submissions', 'users'],
     results: [],
   },
 
   menuNavigation: {
-    columns: ['menu_item', 'link_to', 'from_page', 'clicks', 'users'],
+    columns: ['event_type', 'link_text', 'link_url', 'from_page', 'clicks', 'users'],
+    results: [],
+  },
+
+  leadsSignups: {
+    columns: ['day', 'leads', 'signups'],
     results: [],
   },
 

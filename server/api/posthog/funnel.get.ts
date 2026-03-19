@@ -11,8 +11,8 @@ export default defineEventHandler(async (event) => {
         kind: 'FunnelsQuery',
         series: [
           { kind: 'EventsNode', event: '$pageview', custom_name: 'Page View' },
-          { kind: 'EventsNode', event: 'section_viewed', custom_name: 'Section Viewed' },
-          { kind: 'EventsNode', event: '$autocapture', custom_name: 'CTA Click' },
+          { kind: 'EventsNode', event: 'form_submitted', custom_name: 'Form Submitted' },
+          { kind: 'EventsNode', event: 'signup_completed_server', custom_name: 'Signup Completed' },
         ],
         dateRange: { date_from: `-${days}d` },
         funnelsFilter: { funnelWindowInterval: 14, funnelWindowIntervalUnit: 'day' },
