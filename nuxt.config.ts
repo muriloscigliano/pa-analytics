@@ -7,6 +7,14 @@ export default defineNuxtConfig({
     port: 3010
   },
 
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+      ],
+    },
+  },
+
   runtimeConfig: {
     posthogPersonalApiKey: process.env.POSTHOG_PERSONAL_API_KEY,
     posthogProjectId: process.env.POSTHOG_PROJECT_ID,
