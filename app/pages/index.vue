@@ -5,6 +5,10 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><FunnelChart /><VisitorTypes /></div>
     <div class="section-gap"><SectionEngagement /></div>
     <div class="section-gap"><PageviewChart /></div>
+    <div class="section-gap"><PageFunnels /></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><DeviceConversion /><TimeToConvert /></div>
+    <div class="section-gap"><SourceConversion /></div>
+    <div class="section-gap"><PagePaths /></div>
     <div class="section-gap"><TopPagesTable /></div>
     <div class="section-gap"><TopClicks /></div>
     <div class="section-gap"><PageExits /></div>
@@ -12,6 +16,7 @@
     <div class="section-gap"><MenuNavigation /></div>
     <div class="section-gap"><NavSources /></div>
     <div class="section-gap"><LeadsSignups /></div>
+    <div class="section-gap"><SectionHeatmap /></div>
     <div class="section-gap"><AbComparison /></div>
     <div class="section-gap"><ScrollDepth /></div>
     <div class="grid grid-cols-1 lg:grid-cols-3 dash-gap section-gap"><TrafficSources /><GeoBreakdown /><DeviceBreakdown /></div>
