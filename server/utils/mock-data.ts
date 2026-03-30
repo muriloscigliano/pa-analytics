@@ -44,15 +44,6 @@ export const MOCK = {
     ],
   },
 
-  clicks: {
-    columns: ['page', 'button_text', 'link_to', 'clicks', 'users'],
-    results: [
-      ['/', 'Get Started', '', 1, 1],
-      ['/signup', null, '/', 1, 1],
-      ['/signup', null, '', 1, 1],
-    ],
-  },
-
   abComparison: {
     columns: ['variant', 'event', 'total', 'users'],
     results: [
@@ -123,7 +114,7 @@ export const MOCK = {
   },
 
   menuNavigation: {
-    columns: ['event_type', 'link_text', 'link_url', 'from_page', 'clicks', 'users'],
+    columns: ['event_type', 'link_name', 'destination', 'menu_source', 'clicks', 'users'],
     results: [],
   },
 
@@ -132,12 +123,4 @@ export const MOCK = {
     results: [],
   },
 
-  navSources: {
-    columns: ['page', 'source', 'visits', 'users'],
-    results: [
-      ['/', 'localhost:3005', 8, 2],
-      ['/', '$direct', 4, 1],
-      ['/signup', 'localhost:3005', 1, 1],
-    ],
-  },
 }

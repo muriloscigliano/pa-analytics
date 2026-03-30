@@ -1,25 +1,52 @@
 <template>
   <div class="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 py-6 sm:py-14">
     <div class="section-gap"><DashboardHeader /></div>
+
+    <!-- 1. TRAFFIC & ACQUISITION -->
+    <div class="dash-section-header">Traffic & Acquisition</div>
     <div class="section-gap"><KpiCards /></div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><FunnelChart /><VisitorTypes /></div>
-    <div class="section-gap"><SectionEngagement /></div>
     <div class="section-gap"><PageviewChart /></div>
-    <div class="section-gap"><PageFunnels /></div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><DeviceConversion /><TimeToConvert /></div>
-    <div class="section-gap"><SourceConversion /></div>
-    <div class="section-gap"><PagePaths /></div>
     <div class="section-gap"><TopPagesTable /></div>
-    <div class="section-gap"><TopClicks /></div>
-    <div class="section-gap"><PageExits /></div>
-    <div class="section-gap"><FormSubmissions /></div>
-    <div class="section-gap"><MenuNavigation /></div>
-    <div class="section-gap"><NavSources /></div>
-    <div class="section-gap"><LeadsSignups /></div>
+    <div class="section-gap"><TrafficSources /></div>
+    <div class="section-gap"><LandingConversion /></div>
+
+    <!-- 2. CONTENT ENGAGEMENT -->
+    <div class="dash-section-header">Content Engagement</div>
+    <div class="section-gap"><SectionEngagement /></div>
     <div class="section-gap"><SectionHeatmap /></div>
-    <div class="section-gap"><AbComparison /></div>
+    <div class="section-gap"><SectionFunnel /></div>
+
+    <!-- 3. CTA PERFORMANCE -->
+    <div class="dash-section-header">CTA Performance</div>
+    <div class="section-gap"><CtaPerformance /></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><CtaByLocation /><HeaderCta /></div>
+    <div class="section-gap"><FloatingCta /></div>
+
+    <!-- 4. CONVERSION FUNNEL -->
+    <div class="dash-section-header">Conversion Funnel</div>
+    <div class="section-gap"><FunnelChart /></div>
+    <div class="section-gap"><PageFunnels /></div>
+    <div class="section-gap"><FormSubmissions /></div>
+    <div class="section-gap"><FormQuality /></div>
+
+    <!-- 5. LEAD QUALITY -->
+    <div class="dash-section-header">Lead Quality</div>
+    <div class="section-gap"><SourceConversion /></div>
+    <div class="section-gap"><ConvertingPages /></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><DeviceConversion /><TimeToConvert /></div>
+
+    <!-- 6. MENU & NAVIGATION -->
+    <div class="dash-section-header">Menu & Navigation</div>
+    <div class="section-gap"><MenuNavigation /></div>
+
+    <!-- 7. TECHNICAL -->
+    <div class="dash-section-header">Technical</div>
+    <div class="section-gap"><LeadsSignups /></div>
+    <div class="section-gap"><PagePaths /></div>
+    <div class="section-gap"><PageExits /></div>
     <div class="section-gap"><ScrollDepth /></div>
-    <div class="grid grid-cols-1 lg:grid-cols-3 dash-gap section-gap"><TrafficSources /><GeoBreakdown /><DeviceBreakdown /></div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 dash-gap section-gap"><GeoBreakdown /><DeviceBreakdown /><VisitorTypes /></div>
+    <div class="section-gap"><AbComparison /></div>
     <div class="section-gap"><WebVitals /></div>
   </div>
 </template>

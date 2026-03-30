@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   const [pageviews, uniqueUsers, signups] = await Promise.all([
     queryPostHog(`SELECT count() AS total FROM events WHERE event = '$pageview' AND timestamp >= now() - INTERVAL ${days} DAY`),
     queryPostHog(`SELECT count(DISTINCT person_id) AS total FROM events WHERE timestamp >= now() - INTERVAL ${days} DAY`),
-    queryPostHog(`SELECT count() AS total FROM events WHERE event = 'signup_completed' AND timestamp >= now() - INTERVAL ${days} DAY`),
+    queryPostHog(`SELECT count() AS total FROM events WHERE event = 'signup_completed_server' AND timestamp >= now() - INTERVAL ${days} DAY`),
   ])
 
   return {

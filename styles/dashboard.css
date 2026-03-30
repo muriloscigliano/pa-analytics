@@ -281,6 +281,18 @@
   }
 }
 
+/* ── Section header ── */
+.dash-section-header {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--dash-text-ghost);
+  padding: 40px 0 8px;
+  border-bottom: 1px solid var(--dash-border-row);
+  margin-bottom: 8px;
+}
+
 @media (max-width: 480px) {
   .metrics-grid {
     grid-template-columns: 1fr !important;
