@@ -7,8 +7,9 @@
     <div class="section-gap"><KpiCards /></div>
     <div class="section-gap"><PageviewChart /></div>
     <div class="section-gap"><TopPagesTable /></div>
+    <div class="section-gap"><EntryPages /></div>
     <div class="section-gap"><TrafficSources /></div>
-    <div class="section-gap"><LandingConversion /></div>
+    <div class="section-gap"><TrafficByHour /></div>
 
     <!-- 2. CONTENT ENGAGEMENT -->
     <div class="dash-section-header">Content Engagement</div>
@@ -27,12 +28,16 @@
     <div class="section-gap"><FunnelChart /></div>
     <div class="section-gap"><PageFunnels /></div>
     <div class="section-gap"><FormSubmissions /></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><FormByDay /><FormByHour /></div>
     <div class="section-gap"><FormQuality /></div>
 
     <!-- 5. LEAD QUALITY -->
     <div class="dash-section-header">Lead Quality</div>
+    <div class="section-gap"><VisitorConversion /></div>
+    <div class="section-gap"><AbConversion /></div>
     <div class="section-gap"><SourceConversion /></div>
     <div class="section-gap"><ConvertingPages /></div>
+    <div class="section-gap"><PageDepth /></div>
     <div class="section-gap"><DeviceConversion /></div>
     <div class="section-gap"><TimeToConvert /></div>
 
