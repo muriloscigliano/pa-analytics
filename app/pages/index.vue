@@ -33,7 +33,8 @@
     <div class="dash-section-header">Lead Quality</div>
     <div class="section-gap"><SourceConversion /></div>
     <div class="section-gap"><ConvertingPages /></div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><DeviceConversion /><TimeToConvert /></div>
+    <div class="section-gap"><DeviceConversion /></div>
+    <div class="section-gap"><TimeToConvert /></div>
 
     <!-- 6. MENU & NAVIGATION -->
     <div class="dash-section-header">Menu & Navigation</div>
@@ -45,7 +46,8 @@
     <div class="section-gap"><PagePaths /></div>
     <div class="section-gap"><PageExits /></div>
     <div class="section-gap"><ScrollDepth /></div>
-    <div class="grid grid-cols-1 lg:grid-cols-3 dash-gap section-gap"><GeoBreakdown /><DeviceBreakdown /><VisitorTypes /></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><GeoBreakdown /><DeviceBreakdown /></div>
+    <div class="section-gap"><VisitorTypes /></div>
     <div class="section-gap"><AbComparison /></div>
     <div class="section-gap"><WebVitals /></div>
   </div>

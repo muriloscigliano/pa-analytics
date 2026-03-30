@@ -8,10 +8,10 @@
     <EmptyState v-else-if="!stats && !pageStats" title="No conversions yet" description="Time-to-convert data will appear here once visitors start submitting forms (form_submitted events)." />
     <div v-else>
       <!-- Time stats -->
-      <div v-if="stats" class="grid grid-cols-2 sm:grid-cols-4 gap-6" style="margin-bottom: 28px;">
-        <div v-for="(s, i) in timeCards" :key="'t-' + i" style="text-align: center;">
+      <div v-if="stats" class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4" style="margin-bottom: 28px;">
+        <div v-for="(s, i) in timeCards" :key="'t-' + i" style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 16px; text-align: center;">
           <p style="font-size: 14px; color: var(--dash-text-muted); margin-bottom: 8px;">{{ s.label }}</p>
-          <p style="font-size: 28px; font-weight: 700; color: var(--dash-text-primary);" class="tabular-nums">{{ s.value }}</p>
+          <p style="font-size: clamp(20px, 5vw, 28px); font-weight: 700; color: var(--dash-text-primary);" class="tabular-nums">{{ s.value }}</p>
           <p style="font-size: 14px; color: var(--dash-text-ghost); margin-top: 4px;">{{ s.unit }}</p>
         </div>
       </div>
@@ -19,10 +19,10 @@
       <!-- Pages before convert -->
       <div v-if="pageStats">
         <p style="font-size: 14px; font-weight: 600; color: var(--dash-text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Pages Before Conversion</p>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
-          <div v-for="(s, i) in pageCards" :key="'p-' + i" style="text-align: center;">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+          <div v-for="(s, i) in pageCards" :key="'p-' + i" style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 16px; text-align: center;">
             <p style="font-size: 14px; color: var(--dash-text-muted); margin-bottom: 8px;">{{ s.label }}</p>
-            <p style="font-size: 28px; font-weight: 700; color: var(--dash-text-primary);" class="tabular-nums">{{ s.value }}</p>
+            <p style="font-size: clamp(20px, 5vw, 28px); font-weight: 700; color: var(--dash-text-primary);" class="tabular-nums">{{ s.value }}</p>
             <p style="font-size: 14px; color: var(--dash-text-ghost); margin-top: 4px;">{{ s.unit }}</p>
           </div>
         </div>

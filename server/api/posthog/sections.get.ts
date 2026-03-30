@@ -5,6 +5,6 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
   return await queryPostHog(`
     SELECT properties.section_name AS section, properties.page AS page, count() AS views, count(DISTINCT person_id) AS unique_users
     FROM events WHERE event = 'section_viewed' AND timestamp >= now() - INTERVAL ${days} DAY
-    GROUP BY section, page ORDER BY page, views DESC LIMIT 50
+    GROUP BY section, page ORDER BY views DESC LIMIT 50
   `)
 })

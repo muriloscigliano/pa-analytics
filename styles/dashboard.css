@@ -283,14 +283,15 @@
 
 /* ── Section header ── */
 .dash-section-header {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--dash-text-ghost);
-  padding: 40px 0 8px;
+  letter-spacing: 0.1em;
+  color: var(--dash-text-muted);
+  margin-top: 56px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--dash-border-row);
-  margin-bottom: 8px;
 }
 
 @media (max-width: 480px) {

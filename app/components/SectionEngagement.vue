@@ -60,6 +60,9 @@ const grouped = computed(() => {
     const avg = uniqueUsers > 0 ? (views / uniqueUsers).toFixed(1) : '0'
     groups[key].push({ name, views, uniqueUsers, pct: Math.round((views / max) * 100), avgPerUser: avg })
   }
+  for (const key in groups) {
+    groups[key].sort((a, b) => b.views - a.views)
+  }
   return groups
 })
 </script>

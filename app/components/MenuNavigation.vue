@@ -47,10 +47,7 @@
         <div v-if="mobileRows.length > 0">
           <div v-for="(row, i) in mobileRows" :key="'mobile-' + i" class="flex flex-wrap items-center justify-between gap-1" :style="{ padding: '14px 0', borderBottom: i < mobileRows.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
             <span style="font-size: 14px; font-weight: 500; color: var(--dash-text-primary);">{{ row.label }}</span>
-            <div class="flex items-center gap-4">
-              <span style="font-size: 14px; color: var(--dash-text-faint);">{{ row.users }} users</span>
-              <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ row.clicks }}</span>
-            </div>
+            <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ row.toggles }} toggles</span>
           </div>
         </div>
         <EmptyState v-else title="Waiting for mobile menu data" description="Mobile menu usage data will appear once mobile_menu events start firing." />
@@ -67,20 +64,21 @@ const { data: openedData, pending: pendingOpened, error: errorOpened, refresh: r
 const { data: mobileData, pending: pendingMobile, error: errorMobile, refresh: refreshMobile } = useFetch(() => `/api/posthog/mobile-menu?days=${period.value}`, { watch: [period, refreshKey] })
 
 const linkRows = computed(() =>
-  ((linksData.value as any)?.results ?? []).map(([link_name, destination, menu_source, clicks, users]: [string, string, string, number, number]) => ({
-    link_name, destination, menu_source, clicks, users,
+  ((linksData.value as any)?.results ?? []).map(([event_type, link_name, destination, menu_source, clicks, users]: [string, string, string, string, number, number]) => ({
+    event_type, link_name, destination, menu_source, clicks, users,
   }))
 )
 
 const openedRows = computed(() =>
-  ((openedData.value as any)?.results ?? []).map(([label, opens, users]: [string, number, number]) => ({
-    label, opens, users,
+  ((openedData.value as any)?.results ?? []).map(([menu_name, menu_type, opens, users]: [string, string, number, number]) => ({
+    label: menu_name || menu_type || 'Menu', opens, users,
   }))
 )
 
 const mobileRows = computed(() =>
-  ((mobileData.value as any)?.results ?? []).map(([label, clicks, users]: [string, number, number]) => ({
-    label, clicks, users,
+  ((mobileData.value as any)?.results ?? []).map(([day, action, toggles]: [string, string, number]) => ({
+    label: `${action} (${new Date(day).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })})`,
+    toggles,
   }))
 )
 </script>
