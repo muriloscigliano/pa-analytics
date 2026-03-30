@@ -10,7 +10,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
       countIf(event = '$pageview') AS views,
       countIf(event = 'form_submitted') AS forms,
       countIf(event = 'signup_completed_server') AS signups,
-      round(countIf(event = 'form_submitted') * 100.0 / greatest(countIf(event = '$pageview'), 1), 1) AS form_rate
+      least(round(countIf(event = 'form_submitted') * 100.0 / greatest(countIf(event = '$pageview'), 1), 1), 100) AS form_rate
     FROM events
     WHERE timestamp >= now() - INTERVAL ${days} DAY
       AND event IN ('$pageview', 'form_submitted', 'signup_completed_server')

@@ -1,7 +1,7 @@
 <template>
   <div class="dash-card">
     <h2 class="dash-title">Page Conversion Funnels</h2>
-    <p class="dash-help">Conversion performance per landing page. Shows which pages drive the most form submissions and signups — helps identify high-performing pages and pages that need better CTAs or content.</p>
+    <p class="dash-help">Conversion rate per page. "Views" = unique pageviews. "Forms" = total submissions (includes retries). Rate = forms / views, capped at 100%.</p>
     <LoadingSpinner v-if="pending" />
     <ErrorAlert v-else-if="error" :message="error.message" @retry="refresh" />
     <EmptyState v-else-if="!pages.length" title="No funnel data yet" description="Per-page funnel data will appear here once form_submitted and signup events start flowing alongside pageviews." />

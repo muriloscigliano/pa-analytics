@@ -1,7 +1,7 @@
 <template>
   <div class="dash-card">
     <h2 class="dash-title">Form Submissions</h2>
-    <p class="dash-help">Forms submitted by visitors — signup, contact, partnership, and inline signup. Grouped by form type and page where it was submitted.</p>
+    <p class="dash-help">All form submissions grouped by type and page. "Submissions" = total times the form was sent (includes retries). "People" = unique visitors who submitted.</p>
     <LoadingSpinner v-if="pending" />
     <ErrorAlert v-else-if="error" :message="error.message" @retry="refresh" />
     <div v-else>
@@ -12,8 +12,8 @@
             <div v-for="(form, i) in group" :key="i" class="flex flex-wrap items-center justify-between gap-1" :style="{ padding: '14px 0', borderBottom: i < group.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
               <span style="font-size: 14px; color: var(--dash-text-body);">{{ form.page || '/' }}</span>
               <div class="flex items-center gap-4">
-                <span style="font-size: 14px; color: var(--dash-text-faint);">{{ form.users }} users</span>
-                <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ form.submissions }}</span>
+                <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ form.submissions }} <span style="font-weight: 400; color: var(--dash-text-ghost);">submissions</span></span>
+                <span style="font-size: 14px; color: var(--dash-text-faint);" class="tabular-nums">{{ form.users }} <span style="color: var(--dash-text-ghost);">people</span></span>
               </div>
             </div>
           </div>
