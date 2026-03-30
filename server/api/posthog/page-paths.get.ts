@@ -9,8 +9,8 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
     SELECT from_page, to_page, count() AS transitions, count(DISTINCT pid) AS users
     FROM (
       SELECT person_id AS pid,
-        replaceRegexpAll(properties.$pathname, '(.+)/+$', '\\1') AS from_page,
-        replaceRegexpAll(leadInFrame(properties.$pathname, 1) OVER (PARTITION BY person_id ORDER BY timestamp), '(.+)/+$', '\\1') AS to_page
+        if(replaceRegexpAll(properties.$pathname, '/+$', '') = '', '/', replaceRegexpAll(properties.$pathname, '/+$', '')) AS from_page,
+        if(replaceRegexpAll(leadInFrame(properties.$pathname, 1) OVER (PARTITION BY person_id ORDER BY timestamp), '/+$', '') = '', '/', replaceRegexpAll(leadInFrame(properties.$pathname, 1) OVER (PARTITION BY person_id ORDER BY timestamp), '/+$', '')) AS to_page
       FROM events
       WHERE event = '$pageview' AND timestamp >= now() - INTERVAL ${days} DAY
         AND properties.$pathname NOT LIKE '%.png'

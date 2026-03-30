@@ -33,6 +33,7 @@
 
     <!-- 5. LEAD QUALITY -->
     <div class="dash-section-header">Lead Quality</div>
+    <div class="section-gap"><ConverterJourney /></div>
     <div class="section-gap"><VisitorConversion /></div>
     <div class="section-gap"><AbConversion /></div>
     <div class="section-gap"><SourceConversion /></div>

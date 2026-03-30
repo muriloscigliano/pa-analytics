@@ -5,7 +5,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
   return await queryPostHog(`
     SELECT
       properties.form_type AS form_type,
-      replaceRegexpAll(properties.$pathname, '(.+)/+$', '\\1') AS page,
+      if(replaceRegexpAll(properties.$pathname, '/+$', '') = '', '/', replaceRegexpAll(properties.$pathname, '/+$', '')) AS page,
       count() AS submissions,
       count(DISTINCT person_id) AS users
     FROM events

@@ -3,7 +3,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
   const days = Number(getQuery(event).days) || 30
   return await queryPostHog(`
     SELECT
-      replaceRegexpAll(prev_page, '(.+)/+$', '\\1') AS from_page,
+      if(replaceRegexpAll(prev_page, '/+$', '') = '', '/', replaceRegexpAll(prev_page, '/+$', '')) AS from_page,
       count() AS transitions,
       count(DISTINCT pid) AS users
     FROM (
@@ -13,7 +13,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
       FROM events
       WHERE event = '$pageview'
         AND timestamp >= now() - INTERVAL ${days} DAY
-        AND replaceRegexpAll(properties.$pathname, '(.+)/+$', '\\1') = '/pricing'
+        AND if(replaceRegexpAll(properties.$pathname, '/+$', '') = '', '/', replaceRegexpAll(properties.$pathname, '/+$', '')) = '/pricing'
         AND properties.$prev_pageview_pathname IS NOT NULL
         AND properties.$prev_pageview_pathname != ''
     )

@@ -3,7 +3,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
   const days = Number(getQuery(event).days) || 30
   return await queryPostHog(`
     SELECT
-      replaceRegexpAll(properties.$pathname, '(.+)/+$', '\\1') AS page,
+      if(replaceRegexpAll(properties.$pathname, '/+$', '') = '', '/', replaceRegexpAll(properties.$pathname, '/+$', '')) AS page,
       count() AS views,
       count(DISTINCT person_id) AS converters
     FROM events
