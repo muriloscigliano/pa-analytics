@@ -19,6 +19,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
       AND properties.$pathname NOT LIKE '%.svg'
       AND properties.$pathname NOT LIKE '%.webp'
       AND properties.$pathname NOT LIKE '%.pdf'
+      AND properties.$pathname != '/welcome'
     GROUP BY page ORDER BY views DESC LIMIT 15
   `)
 })
