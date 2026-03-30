@@ -5,24 +5,35 @@
     <LoadingSpinner v-if="pending" />
     <ErrorAlert v-else-if="error" :message="error.message" @retry="refresh" />
     <div v-else>
-      <div v-for="(row, i) in rows" :key="i" class="flex flex-wrap items-center justify-between gap-2" :style="{ padding: '14px 0', borderBottom: i < rows.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
-        <div class="flex items-center gap-3">
-          <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary); min-width: 40px;" class="tabular-nums">{{ i + 1 }}</span>
-          <span style="font-size: 14px; color: var(--dash-text-body);">{{ row.page || '/' }}</span>
+      <EmptyState v-if="rows.length === 0" title="Waiting for exit data" description="Page exit tracking shows where visitors leave and how long they stayed. Data will appear once visitors start browsing and leaving pages." />
+      <div v-else>
+        <!-- Header -->
+        <div class="hidden sm:flex items-center" style="padding: 0 0 10px; border-bottom: 1px solid var(--dash-border-row); margin-bottom: 4px;">
+          <span style="font-size: 14px; color: var(--dash-text-ghost); flex: 1;">Page</span>
+          <span style="font-size: 14px; color: var(--dash-text-ghost); width: 80px; text-align: right;">Exits</span>
+          <span style="font-size: 14px; color: var(--dash-text-ghost); width: 110px; text-align: right;">Avg Duration</span>
+          <span style="font-size: 14px; color: var(--dash-text-ghost); width: 80px; text-align: right;">Users</span>
         </div>
-        <div class="flex items-center gap-3 sm:gap-6 flex-wrap">
-          <div class="text-right">
-            <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ row.exits }}</span>
-            <span style="font-size: 14px; color: var(--dash-text-ghost); margin-left: 4px;">exits</span>
+        <!-- Rows -->
+        <div v-for="(row, i) in rows" :key="i" :style="{ borderBottom: i < rows.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
+          <!-- Desktop -->
+          <div class="hidden sm:flex items-center" style="padding: 12px 0;">
+            <span style="font-size: 14px; color: var(--dash-text-body); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ row.page || '/' }}</span>
+            <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary); width: 80px; text-align: right;" class="tabular-nums">{{ row.exits }}</span>
+            <span style="font-size: 14px; color: var(--dash-text-body); width: 110px; text-align: right;" class="tabular-nums">{{ formatDuration(row.avgDuration) }}</span>
+            <span style="font-size: 14px; color: var(--dash-text-faint); width: 80px; text-align: right;" class="tabular-nums">{{ row.users }}</span>
           </div>
-          <div class="text-right">
-            <span style="font-size: 14px; color: var(--dash-text-body);" class="tabular-nums">{{ formatDuration(row.avgDuration) }}</span>
-            <span style="font-size: 14px; color: var(--dash-text-ghost); margin-left: 4px;">avg</span>
+          <!-- Mobile -->
+          <div class="sm:hidden" style="padding: 12px 0;">
+            <p style="font-size: 14px; color: var(--dash-text-body); margin-bottom: 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ row.page || '/' }}</p>
+            <div class="flex items-center gap-4" style="font-size: 14px; color: var(--dash-text-faint);">
+              <span><span style="font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ row.exits }}</span> exits</span>
+              <span class="tabular-nums">{{ formatDuration(row.avgDuration) }} avg</span>
+              <span class="tabular-nums">{{ row.users }} users</span>
+            </div>
           </div>
-          <span style="font-size: 14px; color: var(--dash-text-faint);">{{ row.users }} users</span>
         </div>
       </div>
-      <EmptyState v-if="rows.length === 0" title="Waiting for exit data" description="Page exit tracking shows where visitors leave and how long they stayed. Data will appear once visitors start browsing and leaving pages." />
     </div>
   </div>
 </template>

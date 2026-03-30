@@ -39,6 +39,7 @@
     <!-- 6. MENU & NAVIGATION -->
     <div class="dash-section-header">Menu & Navigation</div>
     <div class="section-gap"><MenuNavigation /></div>
+    <div class="section-gap"><LoginClicks /></div>
 
     <!-- 7. TECHNICAL -->
     <div class="dash-section-header">Technical</div>
