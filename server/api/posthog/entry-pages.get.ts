@@ -3,7 +3,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
   const days = Number(getQuery(event).days) || 30
   return await queryPostHog(`
     SELECT
-      replaceRegexpAll(first_page, '/+$', '') AS page,
+      replaceRegexpAll(first_page, '(.+)/+$', '\\1') AS page,
       count() AS entries,
       count(DISTINCT pid) AS users
     FROM (
@@ -16,6 +16,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
         AND properties.$pathname NOT LIKE '%.svg'
       GROUP BY person_id
     )
+    WHERE page != '/welcome'
     GROUP BY page ORDER BY entries DESC LIMIT 15
   `)
 })

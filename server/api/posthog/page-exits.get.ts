@@ -3,7 +3,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
   const days = Number(getQuery(event).days) || 30
 
   return await queryPostHog(`
-    SELECT replaceRegexpAll(properties.$pathname, '/+$', '') AS page,
+    SELECT replaceRegexpAll(properties.$pathname, '(.+)/+$', '\\1') AS page,
       count() AS exits,
       round(avg(properties.$prev_pageview_duration), 1) AS avg_duration_sec,
       count(DISTINCT person_id) AS users

@@ -6,7 +6,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
   }
 
   return await queryPostHog(`
-    SELECT replaceRegexpAll(properties.$pathname, '/+$', '') AS page,
+    SELECT replaceRegexpAll(properties.$pathname, '(.+)/+$', '\\1') AS page,
       countIf(event = '$pageview') AS views,
       countIf(event = 'form_submitted') AS forms,
       countIf(event = 'signup_completed_server') AS signups,
@@ -19,7 +19,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
       AND properties.$pathname NOT LIKE '%.svg'
       AND properties.$pathname NOT LIKE '%.webp'
       AND properties.$pathname NOT LIKE '%.pdf'
-      AND properties.$pathname != '/welcome'
+      AND replaceRegexpAll(properties.$pathname, '(.+)/+$', '\\1') != '/welcome'
     GROUP BY page ORDER BY views DESC LIMIT 15
   `)
 })

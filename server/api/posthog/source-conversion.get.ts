@@ -15,6 +15,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
     FROM events
     WHERE timestamp >= now() - INTERVAL ${days} DAY
       AND event IN ('$pageview', 'form_submitted')
+      AND properties.$referring_domain NOT LIKE '%localhost%'
     GROUP BY source ORDER BY pageviews DESC LIMIT 15
   `)
 })
