@@ -9,10 +9,15 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
     SELECT from_page, to_page, count() AS transitions, count(DISTINCT pid) AS users
     FROM (
       SELECT person_id AS pid,
-        properties.$pathname AS from_page,
-        leadInFrame(properties.$pathname, 1) OVER (PARTITION BY person_id ORDER BY timestamp) AS to_page
+        replaceRegexpAll(properties.$pathname, '/+$', '') AS from_page,
+        replaceRegexpAll(leadInFrame(properties.$pathname, 1) OVER (PARTITION BY person_id ORDER BY timestamp), '/+$', '') AS to_page
       FROM events
       WHERE event = '$pageview' AND timestamp >= now() - INTERVAL ${days} DAY
+        AND properties.$pathname NOT LIKE '%.png'
+        AND properties.$pathname NOT LIKE '%.jpg'
+        AND properties.$pathname NOT LIKE '%.svg'
+        AND properties.$pathname NOT LIKE '%.webp'
+        AND properties.$pathname NOT LIKE '%.pdf'
     )
     WHERE to_page != '' AND to_page IS NOT NULL AND from_page != to_page
     GROUP BY from_page, to_page

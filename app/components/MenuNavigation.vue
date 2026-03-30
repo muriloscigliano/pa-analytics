@@ -12,8 +12,8 @@
         <p style="font-size: 14px; font-weight: 600; color: var(--dash-text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Link Clicks</p>
         <div v-if="linkRows.length > 0">
           <div v-for="(row, i) in linkRows" :key="'link-' + i" class="flex flex-wrap items-center justify-between gap-1" :style="{ padding: '14px 0', borderBottom: i < linkRows.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
-            <div class="flex items-center gap-3">
-              <span style="font-size: 14px; font-weight: 500; color: var(--dash-text-primary);">{{ row.link_name || 'Link' }}</span>
+            <div class="flex items-center gap-3 flex-wrap">
+              <span style="font-size: 14px; font-weight: 500; color: var(--dash-text-primary);">{{ row.link_name || (row.event_type === 'header_cta_clicked' ? 'Header CTA' : formatPath(row.destination)) }}</span>
               <span v-if="row.destination" style="font-size: 14px; color: var(--dash-text-ghost);">→ {{ row.destination }}</span>
               <span v-if="row.menu_source" class="pill pill-neutral">{{ row.menu_source }}</span>
             </div>
@@ -62,6 +62,13 @@ const { period, refreshKey } = usePeriod()
 const { data: linksData, pending: pendingLinks, error: errorLinks, refresh: refreshLinks } = useFetch(() => `/api/posthog/menu-navigation?days=${period.value}`, { watch: [period, refreshKey] })
 const { data: openedData, pending: pendingOpened, error: errorOpened, refresh: refreshOpened } = useFetch(() => `/api/posthog/menu-opened?days=${period.value}`, { watch: [period, refreshKey] })
 const { data: mobileData, pending: pendingMobile, error: errorMobile, refresh: refreshMobile } = useFetch(() => `/api/posthog/mobile-menu?days=${period.value}`, { watch: [period, refreshKey] })
+
+function formatPath(path: string | null): string {
+  if (!path) return 'Link'
+  const clean = path.replace(/^\//, '').replace(/#.*$/, '').replace(/\/$/, '')
+  if (!clean) return 'Home'
+  return clean.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+}
 
 const linkRows = computed(() =>
   ((linksData.value as any)?.results ?? []).map(([event_type, link_name, destination, menu_source, clicks, users]: [string, string, string, string, number, number]) => ({

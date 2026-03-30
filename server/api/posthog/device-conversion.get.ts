@@ -9,6 +9,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
     SELECT properties.$device_type AS device,
       countIf(event = '$pageview') AS pageviews,
       countIf(event = 'form_submitted') AS form_submits,
+      uniqIf(person_id, event = 'form_submitted') AS form_submitters,
       countIf(event = 'signup_completed_server') AS signups,
       count(DISTINCT person_id) AS users
     FROM events WHERE timestamp >= now() - INTERVAL ${days} DAY

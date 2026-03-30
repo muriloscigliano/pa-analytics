@@ -17,7 +17,7 @@
         </div>
         <div class="flex items-center justify-between" style="padding: 10px 0; border-bottom: 1px solid var(--dash-border-row);">
           <span style="font-size: 14px; color: var(--dash-text-muted);">Form Submits</span>
-          <span style="font-size: 16px; font-weight: 700; color: var(--dash-text-primary);" class="tabular-nums">{{ r.forms }}</span>
+          <span style="font-size: 16px; font-weight: 700; color: var(--dash-text-primary);" class="tabular-nums">{{ r.forms }} <span style="font-size: 14px; font-weight: 400; color: var(--dash-text-ghost);">from {{ r.submitters }} people</span></span>
         </div>
         <div class="flex items-center justify-between" style="padding: 10px 0; border-bottom: 1px solid var(--dash-border-row);">
           <span style="font-size: 14px; color: var(--dash-text-muted);">Signups</span>
@@ -35,8 +35,8 @@
 <script setup lang="ts">
 const { period, refreshKey } = usePeriod()
 const { data, pending, error, refresh } = useFetch(() => `/api/posthog/device-conversion?days=${period.value}`, { watch: [period, refreshKey] })
-const rows = computed(() => ((data.value as any)?.results ?? []).map(([device, pageviews, forms, signups, users]: [string, number, number, number, number]) => ({
-  device, pageviews, forms, signups, users,
+const rows = computed(() => ((data.value as any)?.results ?? []).map(([device, pageviews, forms, submitters, signups, users]: [string, number, number, number, number, number]) => ({
+  device, pageviews, forms, submitters, signups, users,
   rate: pageviews > 0 ? Math.round((forms / pageviews) * 1000) / 10 : 0,
 })))
 </script>
