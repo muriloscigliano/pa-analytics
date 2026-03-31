@@ -8,34 +8,29 @@ export default defineEventHandler(async (event) => {
     : ''
 
   const [flowsData, pagesData, depthData] = await Promise.all([
-    // Page-to-page transitions using window function (works with SPA)
     queryPostHog(`
       SELECT from_page, to_page, count() AS transitions, count(DISTINCT pid) AS users
       FROM (
         SELECT person_id AS pid,
+          if(replaceRegexpAll(properties.$prev_pageview_pathname, '/+$', '') = '', '/',
+            replaceRegexpAll(properties.$prev_pageview_pathname, '/+$', '')) AS from_page,
           if(replaceRegexpAll(properties.$pathname, '/+$', '') = '', '/',
-            replaceRegexpAll(properties.$pathname, '/+$', '')) AS from_page,
-          if(replaceRegexpAll(
-            leadInFrame(properties.$pathname, 1) OVER (PARTITION BY person_id ORDER BY timestamp),
-            '/+$', '') = '', '/',
-            replaceRegexpAll(
-              leadInFrame(properties.$pathname, 1) OVER (PARTITION BY person_id ORDER BY timestamp),
-              '/+$', ''))
-          AS to_page
+            replaceRegexpAll(properties.$pathname, '/+$', '')) AS to_page
         FROM events
-        WHERE event = '$pageview' AND timestamp >= now() - INTERVAL ${days} DAY
+        WHERE event = '$pageview'
+          AND timestamp >= now() - INTERVAL ${days} DAY
+          AND properties.$prev_pageview_pathname IS NOT NULL
+          AND properties.$prev_pageview_pathname != ''
           AND properties.$pathname != '/welcome'
           AND properties.$pathname NOT LIKE '%.png'
       )
-      WHERE to_page != '' AND to_page IS NOT NULL
-        AND from_page != to_page
+      WHERE from_page != to_page
         AND to_page != '/welcome'
         ${fromFilter}
       GROUP BY from_page, to_page
       ORDER BY transitions DESC LIMIT 30
     `),
 
-    // Pages for filter dropdown
     queryPostHog(`
       SELECT
         if(replaceRegexpAll(properties.$pathname, '/+$', '') = '', '/',
@@ -48,7 +43,6 @@ export default defineEventHandler(async (event) => {
       GROUP BY page ORDER BY views DESC LIMIT 20
     `),
 
-    // Visitor depth stats
     queryPostHog(`
       SELECT
         count() AS total_visitors,
