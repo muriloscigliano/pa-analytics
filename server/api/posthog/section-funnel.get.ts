@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
         kind: 'FunnelsQuery',
         series: [
           { kind: 'EventsNode', event: 'section_viewed', custom_name: 'Section Viewed' },
-          { kind: 'EventsNode', event: 'cta_clicked', custom_name: 'CTA Clicked' },
+          { kind: 'EventsNode', event: 'header_cta_clicked', custom_name: 'CTA Clicked' },
           { kind: 'EventsNode', event: 'form_submitted', custom_name: 'Form Submitted' },
         ],
         dateRange: { date_from: `-${days}d` },

@@ -1,12 +1,12 @@
 <template>
   <div class="dash-card">
     <h2 class="dash-title">Converter Journey Flow</h2>
-    <p class="dash-help">The full journey of visitors who submitted a form — which pages they visited, which sections they viewed on each page, and where they converted. Shows the typical path from landing to signup.</p>
+    <p class="dash-help">What pages converters visit at each step of their journey. Step 1 is the entry page, step 2 is the next page they navigate to, and so on. Sections show what content they read on each page.</p>
     <LoadingSpinner v-if="pending" />
     <ErrorAlert v-else-if="error" :message="error.message" @retry="refresh" />
-    <EmptyState v-else-if="!data?.totalConverters" title="No converter journeys yet" description="Journey data will appear once visitors start submitting forms. Requires pageview, section_viewed, and form_submitted events." />
+    <EmptyState v-else-if="!data?.totalConverters" title="No converter journeys yet" description="Journey data will appear once visitors start submitting forms." />
     <div v-else>
-      <!-- Summary stats -->
+      <!-- Summary -->
       <div class="grid grid-cols-2 gap-3 sm:gap-4" style="margin-bottom: 28px;">
         <div style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 16px; text-align: center;">
           <p style="font-size: clamp(20px, 5vw, 28px); font-weight: 700; color: var(--dash-text-primary);" class="tabular-nums">{{ data.totalConverters }}</p>
@@ -18,50 +18,59 @@
         </div>
       </div>
 
-      <!-- Typical journey flow -->
-      <p style="font-size: 14px; font-weight: 600; color: var(--dash-text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Typical Page Flow (by position in journey)</p>
-      <div v-for="(page, i) in data.summary" :key="page.page" style="margin-bottom: 20px;">
-        <!-- Page step -->
-        <div class="flex items-start gap-3">
-          <!-- Step indicator -->
-          <div style="display: flex; flex-direction: column; align-items: center; min-width: 32px;">
-            <div :style="{ width: '32px', height: '32px', borderRadius: '50%', background: page.page === '/signup' || page.sections.some((s: any) => s.name === 'form') ? '#C4343A' : 'var(--dash-bg-inset)', border: '2px solid ' + (page.page === '/signup' ? '#C4343A' : 'var(--dash-border-card)'), display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: '700', color: page.page === '/signup' ? '#fff' : 'var(--dash-text-primary)' }" class="tabular-nums">{{ i + 1 }}</div>
-            <div v-if="i < data.summary.length - 1" style="width: 2px; height: 16px; background: var(--dash-border-card); margin-top: 4px;" />
-          </div>
-          <!-- Page content -->
-          <div style="flex: 1; padding-bottom: 4px;">
+      <!-- Position-based flow -->
+      <div v-for="(pos, pi) in data.positions" :key="pi" style="margin-bottom: 16px;">
+        <!-- Step header -->
+        <div class="flex items-center gap-3" style="margin-bottom: 10px;">
+          <div :style="{ width: '28px', height: '28px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 700, color: '#fff', background: pi === 0 ? '#C4343A' : 'var(--dash-text-ghost)', flexShrink: 0 }" class="tabular-nums">{{ pos.position }}</div>
+          <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-faint); text-transform: uppercase; letter-spacing: 0.06em;">{{ pi === 0 ? 'Entry Page' : `Page ${pos.position}` }}</span>
+        </div>
+
+        <!-- Pages at this position -->
+        <div style="padding-left: 40px;">
+          <div v-for="(p, i) in pos.pages" :key="p.page" :style="{ padding: '10px 0', borderBottom: i < pos.pages.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
             <div class="flex items-center justify-between flex-wrap gap-2">
-              <span style="font-size: 15px; font-weight: 600; color: var(--dash-text-primary);">{{ page.page || '/' }}</span>
-              <span style="font-size: 14px; color: var(--dash-text-faint);" class="tabular-nums">{{ page.appearances }} converters visited</span>
-            </div>
-            <!-- Sections viewed on this page -->
-            <div v-if="page.sections.length > 0" style="margin-top: 8px; padding-left: 4px;">
-              <div v-for="(sec, si) in page.sections.slice(0, 6)" :key="si" class="flex items-center gap-2" style="padding: 3px 0;">
-                <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--dash-border-card); flex-shrink: 0;" />
-                <span style="font-size: 14px; color: var(--dash-text-body);">{{ sec.name }}</span>
-                <span style="font-size: 14px; color: var(--dash-text-ghost);" class="tabular-nums">{{ sec.count }}x</span>
+              <span style="font-size: 15px; font-weight: 600; color: var(--dash-text-primary);">{{ p.page }}</span>
+              <div class="flex items-center gap-3">
+                <div style="width: 60px;">
+                  <div class="progress-track" style="height: 6px;"><div class="progress-fill" :style="{ width: p.pct + '%' }" /></div>
+                </div>
+                <span style="font-size: 14px; color: var(--dash-text-faint); min-width: 80px; text-align: right;" class="tabular-nums">{{ p.count }} <span style="color: var(--dash-text-ghost);">({{ p.pct }}%)</span></span>
               </div>
-              <span v-if="page.sections.length > 6" style="font-size: 14px; color: var(--dash-text-ghost); padding-left: 14px;">+{{ page.sections.length - 6 }} more sections</span>
+            </div>
+            <!-- Sections on this page -->
+            <div v-if="sections[p.page]?.length" class="flex flex-wrap gap-1" style="margin-top: 6px;">
+              <span v-for="(sec, si) in sections[p.page].slice(0, 3)" :key="si" style="font-size: 13px; color: var(--dash-text-body); border: 1px solid var(--dash-border-card); padding: 1px 8px; border-radius: 4px;">{{ sec.name }} <span style="color: var(--dash-text-ghost);" class="tabular-nums">{{ sec.count }}x</span></span>
+              <span v-if="sections[p.page].length > 3" style="font-size: 13px; color: var(--dash-text-ghost);">+{{ sections[p.page].length - 3 }}</span>
             </div>
           </div>
+        </div>
+
+        <!-- Arrow to next step -->
+        <div v-if="pi < data.positions.length - 1 || (pi === data.positions.length - 1 && data.formSubmissions?.length)" style="padding-left: 12px; height: 20px; display: flex; align-items: center;">
+          <div style="width: 2px; height: 20px; background: var(--dash-border-card);" />
         </div>
       </div>
 
-      <!-- Sample journeys -->
-      <div v-if="data.sampleJourneys?.length" style="margin-top: 32px;">
-        <p style="font-size: 14px; font-weight: 600; color: var(--dash-text-faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Sample Journeys ({{ data.sampleJourneys.length }} of {{ data.totalConverters }})</p>
-        <div v-for="(journey, ji) in data.sampleJourneys.slice(0, showAll ? 10 : 3)" :key="ji" style="margin-bottom: 16px; padding: 16px; background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px;">
-          <div class="flex items-center flex-wrap gap-1">
-            <template v-for="(step, si) in journey" :key="si">
-              <div style="display: inline-flex; align-items: center; gap: 4px;">
-                <span :style="{ fontSize: '14px', fontWeight: step.action ? 600 : 400, color: step.action ? '#C4343A' : 'var(--dash-text-body)' }">{{ step.page || '/' }}</span>
-                <span v-if="step.sections?.length" style="font-size: 12px; color: var(--dash-text-ghost);">({{ step.sections.length }}s)</span>
+      <!-- Form submission (final step) -->
+      <div v-if="data.formSubmissions?.length" style="margin-bottom: 16px;">
+        <div class="flex items-center gap-3" style="margin-bottom: 10px;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; background: #C4343A; flex-shrink: 0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span style="font-size: 14px; font-weight: 600; color: #C4343A; text-transform: uppercase; letter-spacing: 0.06em;">Form Submitted</span>
+        </div>
+        <div style="padding-left: 40px;">
+          <div v-for="(f, i) in data.formSubmissions" :key="i" :style="{ padding: '10px 0', borderBottom: i < data.formSubmissions.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <span style="font-size: 15px; font-weight: 600; color: var(--dash-text-primary);">{{ f.page }}</span>
+                <span style="font-size: 13px; color: var(--dash-text-ghost); border: 1px solid var(--dash-border-card); padding: 1px 8px; border-radius: 4px;">{{ f.formType }}</span>
               </div>
-              <span v-if="si < journey.length - 1" style="color: var(--dash-text-ghost); font-size: 14px;">→</span>
-            </template>
+              <span style="font-size: 14px; color: var(--dash-text-faint);" class="tabular-nums">{{ f.submissions }} submissions · {{ f.users }} people</span>
+            </div>
           </div>
         </div>
-        <button v-if="data.sampleJourneys.length > 3 && !showAll" @click="showAll = true" style="font-size: 14px; color: var(--dash-text-faint); background: none; border: 1px solid var(--dash-border-card); border-radius: 8px; padding: 8px 16px; cursor: pointer; width: 100%;">Show {{ data.sampleJourneys.length - 3 }} more journeys</button>
       </div>
     </div>
   </div>
@@ -70,5 +79,5 @@
 <script setup lang="ts">
 const { period, refreshKey } = usePeriod()
 const { data, pending, error, refresh } = useFetch(() => `/api/posthog/converter-journey?days=${period.value}`, { watch: [period, refreshKey] })
-const showAll = ref(false)
+const sections = computed(() => (data.value as any)?.sections ?? {})
 </script>

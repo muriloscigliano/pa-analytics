@@ -8,6 +8,7 @@
     <div class="section-gap"><PageviewChart /></div>
     <div class="section-gap"><TopPagesTable /></div>
     <div class="section-gap"><EntryPages /></div>
+    <div class="section-gap"><PageFlow /></div>
     <div class="section-gap"><TrafficSources /></div>
     <div class="section-gap"><TrafficByHour /></div>
 
@@ -20,8 +21,7 @@
     <!-- 3. CTA PERFORMANCE -->
     <div class="dash-section-header">CTA Performance</div>
     <div class="section-gap"><CtaPerformance /></div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><CtaByLocation /><HeaderCta /></div>
-    <div class="section-gap"><FloatingCta /></div>
+    <div class="section-gap"><HeaderCta /></div>
 
     <!-- 4. CONVERSION FUNNEL -->
     <div class="dash-section-header">Conversion Funnel</div>
