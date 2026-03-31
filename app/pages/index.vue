@@ -52,7 +52,6 @@
     <!-- 7. TECHNICAL -->
     <div class="dash-section-header">Technical</div>
     <div class="section-gap"><LeadsSignups /></div>
-    <div class="section-gap"><PagePaths /></div>
     <div class="section-gap"><PageExits /></div>
     <div class="section-gap"><ScrollDepth /></div>
     <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><GeoBreakdown /><DeviceBreakdown /></div>

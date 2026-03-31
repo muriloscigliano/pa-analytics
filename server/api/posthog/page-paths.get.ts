@@ -9,17 +9,18 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
     SELECT from_page, to_page, count() AS transitions, count(DISTINCT pid) AS users
     FROM (
       SELECT person_id AS pid,
-        if(replaceRegexpAll(properties.$pathname, '/+$', '') = '', '/', replaceRegexpAll(properties.$pathname, '/+$', '')) AS from_page,
-        if(replaceRegexpAll(leadInFrame(properties.$pathname, 1) OVER (PARTITION BY person_id ORDER BY timestamp), '/+$', '') = '', '/', replaceRegexpAll(leadInFrame(properties.$pathname, 1) OVER (PARTITION BY person_id ORDER BY timestamp), '/+$', '')) AS to_page
+        if(replaceRegexpAll(properties.$prev_pageview_pathname, '/+$', '') = '', '/',
+          replaceRegexpAll(properties.$prev_pageview_pathname, '/+$', '')) AS from_page,
+        if(replaceRegexpAll(properties.$pathname, '/+$', '') = '', '/',
+          replaceRegexpAll(properties.$pathname, '/+$', '')) AS to_page
       FROM events
       WHERE event = '$pageview' AND timestamp >= now() - INTERVAL ${days} DAY
+        AND properties.$prev_pageview_pathname IS NOT NULL
+        AND properties.$prev_pageview_pathname != ''
         AND properties.$pathname NOT LIKE '%.png'
-        AND properties.$pathname NOT LIKE '%.jpg'
-        AND properties.$pathname NOT LIKE '%.svg'
-        AND properties.$pathname NOT LIKE '%.webp'
-        AND properties.$pathname NOT LIKE '%.pdf'
+        AND properties.$pathname != '/welcome'
     )
-    WHERE to_page != '' AND to_page IS NOT NULL AND from_page != to_page
+    WHERE from_page != to_page
     GROUP BY from_page, to_page
     ORDER BY transitions DESC LIMIT 20
   `)
