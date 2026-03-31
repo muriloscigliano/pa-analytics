@@ -8,7 +8,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
       count() AS clicks,
       count(DISTINCT person_id) AS users
     FROM events
-    WHERE event IN ('header_cta_clicked', 'welcome_cta_clicked')
+    WHERE event = 'header_cta_clicked'
       AND timestamp >= now() - INTERVAL ${days} DAY
     GROUP BY event_type, label ORDER BY clicks DESC LIMIT 30
   `)

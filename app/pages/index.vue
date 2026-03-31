@@ -5,6 +5,7 @@
     <!-- 1. TRAFFIC & ACQUISITION -->
     <div class="dash-section-header">Traffic & Acquisition</div>
     <div class="section-gap"><KpiCards /></div>
+    <div class="section-gap"><AdRoi /></div>
     <div class="section-gap"><PageviewChart /></div>
     <div class="section-gap"><TopPagesTable /></div>
     <div class="section-gap"><EntryPages /></div>
