@@ -41,7 +41,7 @@
     <div class="section-gap"><ConvertingPages /></div>
     <div class="section-gap"><PageDepth /></div>
     <div class="section-gap"><ConverterPages /></div>
-    <div class="section-gap"><PagesToPricing /></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><PagesToSignup /><PagesToPricing /></div>
     <div class="section-gap"><DeviceConversion /></div>
     <div class="section-gap"><TimeToConvert /></div>
 

@@ -13,6 +13,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
       AND properties.$pathname NOT LIKE '%.jpg'
       AND properties.$pathname NOT LIKE '%.svg'
       AND properties.$pathname != '/welcome'
+      AND properties.$pathname != '/signup'
       AND person_id IN (
         SELECT DISTINCT person_id FROM events
         WHERE event = 'form_submitted' AND timestamp >= now() - INTERVAL ${days} DAY

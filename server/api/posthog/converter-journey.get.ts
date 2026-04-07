@@ -14,6 +14,7 @@ export default defineEventHandler(async (event) => {
       WHERE event = '$pageview'
         AND timestamp >= now() - INTERVAL ${days} DAY
         AND properties.$pathname != '/welcome'
+        AND properties.$pathname != '/signup'
         AND properties.$pathname NOT LIKE '%.png'
         AND person_id IN (
           SELECT DISTINCT person_id FROM events
@@ -33,6 +34,7 @@ export default defineEventHandler(async (event) => {
       WHERE event = 'section_viewed'
         AND timestamp >= now() - INTERVAL ${days} DAY
         AND properties.page != '/welcome'
+        AND properties.page != '/signup'
         AND person_id IN (
           SELECT DISTINCT person_id FROM events
           WHERE event = 'form_submitted' AND timestamp >= now() - INTERVAL ${days} DAY

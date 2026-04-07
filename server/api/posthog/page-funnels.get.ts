@@ -19,7 +19,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
       AND properties.$pathname NOT LIKE '%.svg'
       AND properties.$pathname NOT LIKE '%.webp'
       AND properties.$pathname NOT LIKE '%.pdf'
-      AND if(replaceRegexpAll(properties.$pathname, '/+$', '') = '', '/', replaceRegexpAll(properties.$pathname, '/+$', '')) != '/welcome'
+      AND if(replaceRegexpAll(properties.$pathname, '/+$', '') = '', '/', replaceRegexpAll(properties.$pathname, '/+$', '')) NOT IN ('/welcome', '/signup')
     GROUP BY page ORDER BY views DESC LIMIT 15
   `)
 })

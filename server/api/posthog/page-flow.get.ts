@@ -22,10 +22,14 @@ export default defineEventHandler(async (event) => {
           AND properties.$prev_pageview_pathname IS NOT NULL
           AND properties.$prev_pageview_pathname != ''
           AND properties.$pathname != '/welcome'
+          AND properties.$pathname != '/signup'
           AND properties.$pathname NOT LIKE '%.png'
       )
       WHERE from_page != to_page
         AND to_page != '/welcome'
+        AND to_page != '/signup'
+        AND from_page != '/welcome'
+        AND from_page != '/signup'
         ${fromFilter}
       GROUP BY from_page, to_page
       ORDER BY transitions DESC LIMIT 30
@@ -39,6 +43,7 @@ export default defineEventHandler(async (event) => {
       FROM events
       WHERE event = '$pageview' AND timestamp >= now() - INTERVAL ${days} DAY
         AND properties.$pathname != '/welcome'
+        AND properties.$pathname != '/signup'
         AND properties.$pathname NOT LIKE '%.png'
       GROUP BY page ORDER BY views DESC LIMIT 20
     `),

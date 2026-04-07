@@ -19,8 +19,11 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
         AND properties.$prev_pageview_pathname != ''
         AND properties.$pathname NOT LIKE '%.png'
         AND properties.$pathname != '/welcome'
+        AND properties.$pathname != '/signup'
     )
     WHERE from_page != to_page
+      AND from_page != '/welcome'
+      AND from_page != '/signup'
     GROUP BY from_page, to_page
     ORDER BY transitions DESC LIMIT 20
   `)

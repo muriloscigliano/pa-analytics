@@ -16,7 +16,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
         AND properties.$pathname NOT LIKE '%.svg'
       GROUP BY person_id
     )
-    WHERE page != '/welcome'
+    WHERE page != '/welcome' AND page != '/signup'
     GROUP BY page ORDER BY entries DESC LIMIT 15
   `)
 })

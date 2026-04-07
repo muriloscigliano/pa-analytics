@@ -13,11 +13,11 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
       FROM events
       WHERE event = '$pageview'
         AND timestamp >= now() - INTERVAL ${days} DAY
-        AND if(replaceRegexpAll(properties.$pathname, '/+$', '') = '', '/', replaceRegexpAll(properties.$pathname, '/+$', '')) = '/pricing'
+        AND if(replaceRegexpAll(properties.$pathname, '/+$', '') = '', '/', replaceRegexpAll(properties.$pathname, '/+$', '')) = '/signup'
         AND properties.$prev_pageview_pathname IS NOT NULL
         AND properties.$prev_pageview_pathname != ''
     )
-    WHERE from_page NOT IN ('/pricing', '/welcome', '/signup', '')
+    WHERE from_page != '/signup' AND from_page != '/welcome' AND from_page != ''
     GROUP BY from_page ORDER BY transitions DESC LIMIT 15
   `)
 })

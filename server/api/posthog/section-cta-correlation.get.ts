@@ -21,7 +21,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
         uniqIf(person_id,
           person_id IN (
             SELECT DISTINCT person_id FROM events
-            WHERE event = 'header_cta_clicked'
+            WHERE event IN ('header_cta_clicked', 'cta_clicked', 'welcome_cta_clicked')
               AND timestamp >= now() - INTERVAL ${days} DAY
           )
         ) AS cta_clickers,
@@ -37,6 +37,8 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
         AND timestamp >= now() - INTERVAL ${days} DAY
         AND properties.page != '/welcome'
         AND properties.page != '/welcome/'
+        AND properties.page != '/signup'
+        AND properties.page != '/signup/'
       GROUP BY section, page
     )
     ORDER BY form_submitters DESC, cta_clickers DESC, section_viewers DESC

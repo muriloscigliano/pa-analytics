@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
         UNION ALL
         SELECT 2 AS pos, 'Header CTA Clicked' AS step,
           count(DISTINCT person_id) AS users
-        FROM events WHERE event IN ('header_cta_clicked', 'welcome_cta_clicked')
+        FROM events WHERE event IN ('header_cta_clicked', 'welcome_cta_clicked', 'cta_clicked')
           AND timestamp >= now() - INTERVAL ${days} DAY
         UNION ALL
         SELECT 3 AS pos, 'Form Submitted' AS step,
@@ -28,28 +28,28 @@ export default defineEventHandler(async (event) => {
           WHERE event = 'section_viewed' AND timestamp >= now() - INTERVAL ${days} DAY
         ) AND person_id IN (
           SELECT DISTINCT person_id FROM events
-          WHERE event IN ('header_cta_clicked', 'welcome_cta_clicked') AND timestamp >= now() - INTERVAL ${days} DAY
+          WHERE event IN ('header_cta_clicked', 'welcome_cta_clicked', 'cta_clicked') AND timestamp >= now() - INTERVAL ${days} DAY
         )) AS section_and_cta,
         uniqIf(person_id, person_id IN (
           SELECT DISTINCT person_id FROM events
           WHERE event = 'section_viewed' AND timestamp >= now() - INTERVAL ${days} DAY
         ) AND person_id NOT IN (
           SELECT DISTINCT person_id FROM events
-          WHERE event IN ('header_cta_clicked', 'welcome_cta_clicked') AND timestamp >= now() - INTERVAL ${days} DAY
+          WHERE event IN ('header_cta_clicked', 'welcome_cta_clicked', 'cta_clicked') AND timestamp >= now() - INTERVAL ${days} DAY
         )) AS section_only,
         uniqIf(person_id, person_id NOT IN (
           SELECT DISTINCT person_id FROM events
           WHERE event = 'section_viewed' AND timestamp >= now() - INTERVAL ${days} DAY
         ) AND person_id IN (
           SELECT DISTINCT person_id FROM events
-          WHERE event IN ('header_cta_clicked', 'welcome_cta_clicked') AND timestamp >= now() - INTERVAL ${days} DAY
+          WHERE event IN ('header_cta_clicked', 'welcome_cta_clicked', 'cta_clicked') AND timestamp >= now() - INTERVAL ${days} DAY
         )) AS cta_only,
         uniqIf(person_id, person_id NOT IN (
           SELECT DISTINCT person_id FROM events
           WHERE event = 'section_viewed' AND timestamp >= now() - INTERVAL ${days} DAY
         ) AND person_id NOT IN (
           SELECT DISTINCT person_id FROM events
-          WHERE event IN ('header_cta_clicked', 'welcome_cta_clicked') AND timestamp >= now() - INTERVAL ${days} DAY
+          WHERE event IN ('header_cta_clicked', 'welcome_cta_clicked', 'cta_clicked') AND timestamp >= now() - INTERVAL ${days} DAY
         )) AS direct_submit
       FROM events WHERE event = 'form_submitted' AND timestamp >= now() - INTERVAL ${days} DAY
     `),
