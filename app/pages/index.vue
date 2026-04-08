@@ -11,7 +11,7 @@
     <div class="section-gap"><EntryPages /></div>
     <div class="section-gap"><PageFlow /></div>
     <div class="section-gap"><TrafficSources /></div>
-    <div class="section-gap"><TrafficByHour /></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><TrafficByDay /><TrafficByHour /></div>
 
     <!-- 2. CONTENT ENGAGEMENT -->
     <div class="dash-section-header">Content Engagement</div>
