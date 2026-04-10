@@ -21,7 +21,7 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
         uniqIf(person_id,
           person_id IN (
             SELECT DISTINCT person_id FROM events
-            WHERE event IN ('header_cta_clicked', 'cta_clicked', 'welcome_cta_clicked')
+            WHERE event IN ('header_cta_clicked', 'cta_clicked', 'welcome_cta_clicked', 'phone_cta_clicked')
               AND timestamp >= now() - INTERVAL ${days} DAY
           )
         ) AS cta_clickers,

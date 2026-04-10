@@ -20,6 +20,10 @@
             <span style="font-size: 14px; color: var(--dash-text-muted);">Submitted Forms</span>
             <span style="font-size: 16px; font-weight: 700; color: var(--dash-text-primary);" class="tabular-nums">{{ r.submissions }} <span style="font-size: 14px; font-weight: 400; color: var(--dash-text-ghost);">from {{ r.submitters }} people</span></span>
           </div>
+          <div class="flex items-center justify-between" style="padding: 8px 0; border-bottom: 1px solid var(--dash-border-row);">
+            <span style="font-size: 14px; color: var(--dash-text-muted);">Phone Calls</span>
+            <span style="font-size: 16px; font-weight: 700; color: var(--dash-text-primary);" class="tabular-nums">{{ r.phoneCalls }}</span>
+          </div>
           <!-- Conversion bar -->
           <div style="margin-top: 12px;">
             <div class="progress-track"><div class="progress-fill" :style="{ width: Math.min(r.rate, 100) + '%' }" /></div>
@@ -35,8 +39,8 @@ const { period, refreshKey } = usePeriod()
 const { data, pending, error, refresh } = useFetch(() => `/api/posthog/visitor-conversion?days=${period.value}`, { watch: [period, refreshKey] })
 
 const rows = computed(() =>
-  ((data.value as any)?.results ?? []).map(([type, visitors, submitters, submissions, rate]: [string, number, number, number, number]) => ({
-    type, visitors, submitters, submissions, rate,
+  ((data.value as any)?.results ?? []).map(([type, visitors, submitters, submissions, rate, phoneCalls]: [string, number, number, number, number, number]) => ({
+    type, visitors, submitters, submissions, rate, phoneCalls: phoneCalls || 0,
   }))
 )
 </script>

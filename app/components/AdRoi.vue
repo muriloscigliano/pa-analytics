@@ -14,6 +14,7 @@
         <span style="font-size: 14px; color: var(--dash-text-ghost); width: 60px; text-align: right;">Conv%</span>
         <span style="font-size: 14px; color: var(--dash-text-ghost); width: 70px; text-align: right;">Logins</span>
         <span style="font-size: 14px; color: var(--dash-text-ghost); width: 70px; text-align: right;">Login%</span>
+        <span style="font-size: 14px; color: var(--dash-text-ghost); width: 55px; text-align: right;">Calls</span>
       </div>
 
       <div v-for="(ch, i) in channels" :key="i" :style="{ borderBottom: i < channels.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
@@ -25,6 +26,7 @@
           <span style="font-size: 14px; color: var(--dash-text-faint); width: 60px; text-align: right;" class="tabular-nums">{{ ch.convRate }}%</span>
           <span style="font-size: 14px; color: var(--dash-text-body); width: 70px; text-align: right;" class="tabular-nums">{{ ch.loggers }}</span>
           <span :style="{ fontSize: '14px', fontWeight: 600, color: ch.loginRate > 30 ? '#C4343A' : 'var(--dash-text-faint)', width: '70px', textAlign: 'right' }" class="tabular-nums">{{ ch.loginRate }}%</span>
+          <span style="font-size: 14px; color: var(--dash-text-body); width: 55px; text-align: right;" class="tabular-nums">{{ ch.callers || 0 }}</span>
         </div>
         <!-- Mobile -->
         <div class="sm:hidden" style="padding: 10px 0;">
@@ -36,6 +38,7 @@
             <span class="tabular-nums">{{ ch.visitors }} visitors</span>
             <span class="tabular-nums">{{ ch.converters }} converted ({{ ch.convRate }}%)</span>
             <span class="tabular-nums">{{ ch.loggers }} logins</span>
+            <span v-if="ch.callers" class="tabular-nums">{{ ch.callers }} calls</span>
           </div>
         </div>
       </div>
@@ -47,6 +50,7 @@
         <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-faint); width: 60px; text-align: right;" class="tabular-nums">{{ totals.convRate }}%</span>
         <span style="font-size: 14px; font-weight: 700; color: var(--dash-text-primary); width: 70px; text-align: right;" class="tabular-nums">{{ totals.loggers }}</span>
         <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-faint); width: 70px; text-align: right;" class="tabular-nums">{{ totals.loginRate }}%</span>
+        <span style="font-size: 14px; font-weight: 700; color: var(--dash-text-primary); width: 55px; text-align: right;" class="tabular-nums">{{ totals.callers || 0 }}</span>
       </div>
 
       <!-- Campaign breakdown -->

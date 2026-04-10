@@ -9,7 +9,8 @@ export default defineEventHandler(async (event) => {
         channel,
         count() AS visitors,
         countIf(has_form = 1) AS converters,
-        countIf(has_login = 1) AS loggers
+        countIf(has_login = 1) AS loggers,
+        countIf(has_phone = 1) AS callers
       FROM (
         SELECT
           person_id,
@@ -36,7 +37,8 @@ export default defineEventHandler(async (event) => {
             )
           ) AS channel,
           if(person_id IN (SELECT DISTINCT person_id FROM events WHERE event = 'form_submitted' AND timestamp >= now() - INTERVAL ${days} DAY), 1, 0) AS has_form,
-          if(person_id IN (SELECT DISTINCT person_id FROM events WHERE event = 'login_clicked' AND timestamp >= now() - INTERVAL ${days} DAY), 1, 0) AS has_login
+          if(person_id IN (SELECT DISTINCT person_id FROM events WHERE event = 'login_clicked' AND timestamp >= now() - INTERVAL ${days} DAY), 1, 0) AS has_login,
+          if(person_id IN (SELECT DISTINCT person_id FROM events WHERE event = 'phone_cta_clicked' AND timestamp >= now() - INTERVAL ${days} DAY), 1, 0) AS has_phone
         FROM events
         WHERE event = '$pageview' AND timestamp >= now() - INTERVAL ${days} DAY
           AND properties.$referring_domain NOT LIKE '%localhost%'
@@ -52,7 +54,8 @@ export default defineEventHandler(async (event) => {
         landing_page,
         count() AS visitors,
         countIf(has_form = 1) AS converters,
-        countIf(has_login = 1) AS loggers
+        countIf(has_login = 1) AS loggers,
+        countIf(has_phone = 1) AS callers
       FROM (
         SELECT
           person_id,
@@ -60,7 +63,8 @@ export default defineEventHandler(async (event) => {
           if(replaceRegexpAll(argMin(properties.$pathname, timestamp), '/+$', '') = '', '/',
             replaceRegexpAll(argMin(properties.$pathname, timestamp), '/+$', '')) AS landing_page,
           if(person_id IN (SELECT DISTINCT person_id FROM events WHERE event = 'form_submitted' AND timestamp >= now() - INTERVAL ${days} DAY), 1, 0) AS has_form,
-          if(person_id IN (SELECT DISTINCT person_id FROM events WHERE event = 'login_clicked' AND timestamp >= now() - INTERVAL ${days} DAY), 1, 0) AS has_login
+          if(person_id IN (SELECT DISTINCT person_id FROM events WHERE event = 'login_clicked' AND timestamp >= now() - INTERVAL ${days} DAY), 1, 0) AS has_login,
+          if(person_id IN (SELECT DISTINCT person_id FROM events WHERE event = 'phone_cta_clicked' AND timestamp >= now() - INTERVAL ${days} DAY), 1, 0) AS has_phone
         FROM events
         WHERE event = '$pageview' AND timestamp >= now() - INTERVAL ${days} DAY
           AND (properties.$current_url LIKE '%gclid%' OR properties.$current_url LIKE '%gad_source%' OR properties.utm_medium = 'cpc')
@@ -74,7 +78,8 @@ export default defineEventHandler(async (event) => {
       SELECT
         count(DISTINCT person_id) AS visitors,
         uniqIf(person_id, person_id IN (SELECT DISTINCT person_id FROM events WHERE event = 'form_submitted' AND timestamp >= now() - INTERVAL ${days} DAY)) AS converters,
-        uniqIf(person_id, person_id IN (SELECT DISTINCT person_id FROM events WHERE event = 'login_clicked' AND timestamp >= now() - INTERVAL ${days} DAY)) AS loggers
+        uniqIf(person_id, person_id IN (SELECT DISTINCT person_id FROM events WHERE event = 'login_clicked' AND timestamp >= now() - INTERVAL ${days} DAY)) AS loggers,
+        uniqIf(person_id, person_id IN (SELECT DISTINCT person_id FROM events WHERE event = 'phone_cta_clicked' AND timestamp >= now() - INTERVAL ${days} DAY)) AS callers
       FROM events
       WHERE event = '$pageview' AND timestamp >= now() - INTERVAL ${days} DAY
         AND properties.$referring_domain NOT LIKE '%localhost%'
@@ -99,18 +104,18 @@ export default defineEventHandler(async (event) => {
     '23217904988': 'PD | Generic | Developers',
   }
 
-  const t = totalsData.results?.[0] || [0, 0, 0]
+  const t = totalsData.results?.[0] || [0, 0, 0, 0]
 
   return {
-    channels: channelData.results.map(([channel, visitors, converters, loggers]: [string, number, number, number]) => ({
-      channel, visitors, converters, loggers,
+    channels: channelData.results.map(([channel, visitors, converters, loggers, callers]: [string, number, number, number, number]) => ({
+      channel, visitors, converters, loggers, callers,
       convRate: visitors > 0 ? Math.round((converters / visitors) * 1000) / 10 : 0,
       loginRate: visitors > 0 ? Math.round((loggers / visitors) * 1000) / 10 : 0,
     })),
-    campaigns: campaignData.results.map(([campaignId, landingPage, visitors, converters, loggers]: [string, string, number, number, number]) => ({
+    campaigns: campaignData.results.map(([campaignId, landingPage, visitors, converters, loggers, callers]: [string, string, number, number, number, number]) => ({
       campaignId: campaignId || 'Unknown',
       campaignName: campaignNames[campaignId] || '',
-      landingPage, visitors, converters, loggers,
+      landingPage, visitors, converters, loggers, callers,
       convRate: visitors > 0 ? Math.round((converters / visitors) * 1000) / 10 : 0,
       loginRate: visitors > 0 ? Math.round((loggers / visitors) * 1000) / 10 : 0,
     })),
@@ -118,6 +123,7 @@ export default defineEventHandler(async (event) => {
       visitors: t[0],
       converters: t[1],
       loggers: t[2],
+      callers: t[3],
       convRate: t[0] > 0 ? Math.round((t[1] / t[0]) * 1000) / 10 : 0,
       loginRate: t[0] > 0 ? Math.round((t[2] / t[0]) * 1000) / 10 : 0,
     },

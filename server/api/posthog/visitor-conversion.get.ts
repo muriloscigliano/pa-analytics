@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event): Promise<{ results: any[]; columns: string[] }> => {
-  if (!isPostHogConfigured()) return { columns: ['visitor_type', 'visitors', 'form_submitters', 'submissions', 'conversion_rate'], results: [] }
+  if (!isPostHogConfigured()) return { columns: ['visitor_type', 'visitors', 'form_submitters', 'submissions', 'conversion_rate', 'phone_calls'], results: [] }
   const days = Number(getQuery(event).days) || 30
   return await queryPostHog(`
     SELECT
@@ -7,10 +7,11 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
       uniqIf(person_id, event = '$pageview') AS visitors,
       uniqIf(person_id, event = 'form_submitted') AS form_submitters,
       countIf(event = 'form_submitted') AS submissions,
-      least(round(uniqIf(person_id, event = 'form_submitted') * 100.0 / greatest(uniqIf(person_id, event = '$pageview'), 1), 1), 100) AS conversion_rate
+      least(round(uniqIf(person_id, event = 'form_submitted') * 100.0 / greatest(uniqIf(person_id, event = '$pageview'), 1), 1), 100) AS conversion_rate,
+      countIf(event = 'phone_cta_clicked') AS phone_calls
     FROM events
     WHERE timestamp >= now() - INTERVAL ${days} DAY
-      AND event IN ('$pageview', 'form_submitted')
+      AND event IN ('$pageview', 'form_submitted', 'phone_cta_clicked')
     GROUP BY visitor_type ORDER BY visitors DESC
   `)
 })

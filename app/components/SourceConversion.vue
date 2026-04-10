@@ -14,6 +14,7 @@
         <div class="flex items-center gap-4">
           <span style="font-size: 14px; color: var(--dash-text-muted);">{{ r.pageviews.toLocaleString() }} views</span>
           <span style="font-size: 14px; color: var(--dash-text-muted);">{{ r.conversions }} conv.</span>
+          <span v-if="r.phoneCalls" style="font-size: 14px; color: var(--dash-text-muted);">{{ r.phoneCalls }} calls</span>
           <span :class="['pill', r.rate > 0 ? 'pill-success' : 'pill-neutral']">{{ r.rate }}%</span>
         </div>
       </div>
@@ -24,5 +25,5 @@
 <script setup lang="ts">
 const { period, refreshKey } = usePeriod()
 const { data, pending, error, refresh } = useFetch(() => `/api/posthog/source-conversion?days=${period.value}`, { watch: [period, refreshKey] })
-const rows = computed(() => ((data.value as any)?.results ?? []).map(([source, pageviews, conversions, users, rate]: [string, number, number, number, number]) => ({ source, pageviews, conversions, users, rate })))
+const rows = computed(() => ((data.value as any)?.results ?? []).map(([source, pageviews, conversions, users, rate, phoneCalls]: [string, number, number, number, number, number]) => ({ source, pageviews, conversions, users, rate, phoneCalls: phoneCalls || 0 })))
 </script>

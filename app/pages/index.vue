@@ -22,7 +22,7 @@
     <!-- 3. CTA PERFORMANCE -->
     <div class="dash-section-header">CTA Performance</div>
     <div class="section-gap"><CtaPerformance /></div>
-    <div class="section-gap"><HeaderCta /></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><HeaderCta /><PhoneCalls /></div>
 
     <!-- 4. CONVERSION FUNNEL -->
     <div class="dash-section-header">Conversion Funnel</div>
