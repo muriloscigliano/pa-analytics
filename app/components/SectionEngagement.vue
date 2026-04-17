@@ -25,14 +25,14 @@
                 <span style="font-size: 14px; color: var(--dash-text-ghost); margin-left: 4px;">users</span>
               </div>
               <div class="text-right" style="min-width: 60px;">
-                <span style="font-size: 14px; color: #C4343A; font-weight: 500;" class="tabular-nums">{{ s.avgPerUser }}x</span>
+                <span style="font-size: 14px; color: var(--dash-accent); font-weight: 500;" class="tabular-nums">{{ s.avgPerUser }}x</span>
               </div>
             </div>
             <!-- Mobile: stacked -->
             <div class="sm:hidden">
               <div class="flex items-center justify-between mb-2">
                 <span style="font-size: 14px; color: var(--dash-text-body);">{{ s.name }}</span>
-                <span style="font-size: 14px; color: #C4343A; font-weight: 500;" class="tabular-nums">{{ s.avgPerUser }}x</span>
+                <span style="font-size: 14px; color: var(--dash-accent); font-weight: 500;" class="tabular-nums">{{ s.avgPerUser }}x</span>
               </div>
               <div class="progress-track mb-2" style="height: 4px;"><div class="progress-fill" :style="{ width: s.pct + '%' }" /></div>
               <div class="flex items-center gap-4" style="font-size: 14px; color: var(--dash-text-faint);">

@@ -8,14 +8,8 @@
     <div v-else>
       <!-- Summary -->
       <div class="grid grid-cols-2 gap-3 sm:gap-4" style="margin-bottom: 24px;">
-        <div style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 14px; text-align: center;">
-          <p style="font-size: clamp(20px, 5vw, 28px); font-weight: 700; color: #C4343A;" class="tabular-nums">{{ d.total }}</p>
-          <p style="font-size: 14px; color: var(--dash-text-faint); margin-top: 6px;">Total Clicks</p>
-        </div>
-        <div style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 14px; text-align: center;">
-          <p style="font-size: clamp(20px, 5vw, 28px); font-weight: 700; color: var(--dash-text-primary);" class="tabular-nums">{{ d.users }}</p>
-          <p style="font-size: 14px; color: var(--dash-text-faint); margin-top: 6px;">Unique People</p>
-        </div>
+        <StatBox :value="d.total" label="Total Clicks" accent />
+        <StatBox :value="d.users" label="Unique People" />
       </div>
 
       <!-- By Page -->

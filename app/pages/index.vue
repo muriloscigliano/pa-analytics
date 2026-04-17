@@ -36,7 +36,6 @@
     <div class="dash-section-header">Lead Quality</div>
     <div class="section-gap"><ConverterJourney /></div>
     <div class="section-gap"><VisitorConversion /></div>
-    <div class="section-gap"><AbConversion /></div>
     <div class="section-gap"><SourceConversion /></div>
     <div class="section-gap"><ConvertingPages /></div>
     <div class="section-gap"><PageDepth /></div>
@@ -47,7 +46,7 @@
 
     <!-- 6. MENU & NAVIGATION -->
     <div class="dash-section-header">Menu & Navigation</div>
-    <div class="section-gap"><MenuNavigation /></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><NavMobile /><NavDesktop /></div>
     <div class="section-gap"><LoginClicks /></div>
 
     <!-- 7. TECHNICAL -->
@@ -57,7 +56,7 @@
     <div class="section-gap"><ScrollDepth /></div>
     <div class="grid grid-cols-1 lg:grid-cols-2 dash-gap section-gap"><GeoBreakdown /><DeviceBreakdown /></div>
     <div class="section-gap"><VisitorTypes /></div>
-    <div class="section-gap"><AbComparison /></div>
+    <div class="section-gap"><Rageclicks /></div>
     <div class="section-gap"><WebVitals /></div>
   </div>
 </template>

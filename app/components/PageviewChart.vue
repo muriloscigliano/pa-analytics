@@ -25,9 +25,9 @@ const chartData = computed(() => {
     labels: results.map(([day]: [string, number]) => new Date(day).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })),
     datasets: [{
       data: results.map(([, views]: [string, number]) => views),
-      borderColor: '#C4343A', backgroundColor: 'rgba(196, 52, 58, 0.05)',
+      borderColor: 'var(--dash-accent)', backgroundColor: 'rgba(196, 52, 58, 0.05)',
       fill: true, tension: 0.4, pointRadius: 3, pointHoverRadius: 5,
-      pointBackgroundColor: '#C4343A', pointBorderColor: '#1a1a1c', pointBorderWidth: 2, borderWidth: 1.5,
+      pointBackgroundColor: 'var(--dash-accent)', pointBorderColor: '#1a1a1c', pointBorderWidth: 2, borderWidth: 1.5,
     }],
   }
 })

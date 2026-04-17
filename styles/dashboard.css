@@ -12,6 +12,8 @@
   --dash-bg-inset: #151517;
   --dash-border-row: #1f1f22;
   --dash-border-card: #2a2a2c;
+  --dash-accent: #C4343A;
+  --dash-accent-soft: rgba(196, 52, 58, 0.1);
 }
 
 /* ── Help text below titles ── */

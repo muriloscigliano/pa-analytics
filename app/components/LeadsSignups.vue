@@ -17,7 +17,7 @@
           </div>
         </div>
         <div v-if="totals.leads > 0" style="font-size: 14px; color: var(--dash-text-muted);">
-          Conversion rate: <span style="font-weight: 600; color: #C4343A;" class="tabular-nums">{{ conversionRate }}%</span>
+          Conversion rate: <span style="font-weight: 600; color: var(--dash-accent);" class="tabular-nums">{{ conversionRate }}%</span>
         </div>
         <div class="h-48 sm:h-64 mt-4">
           <ClientOnly>
@@ -58,7 +58,7 @@ const chartData = computed(() => {
     datasets: [
       {
         label: 'Leads', data: results.map(([, leads]: [string, number]) => leads),
-        borderColor: '#C4343A', backgroundColor: 'rgba(196, 52, 58, 0.05)',
+        borderColor: 'var(--dash-accent)', backgroundColor: 'rgba(196, 52, 58, 0.05)',
         fill: true, tension: 0.4, pointRadius: 3, borderWidth: 1.5,
       },
       {

@@ -22,7 +22,7 @@
       <div v-for="(pos, pi) in data.positions" :key="pi" style="margin-bottom: 16px;">
         <!-- Step header -->
         <div class="flex items-center gap-3" style="margin-bottom: 10px;">
-          <div :style="{ width: '28px', height: '28px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 700, color: '#fff', background: pi === 0 ? '#C4343A' : 'var(--dash-text-ghost)', flexShrink: 0 }" class="tabular-nums">{{ pos.position }}</div>
+          <div :style="{ width: '28px', height: '28px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 700, color: '#fff', background: pi === 0 ? 'var(--dash-accent)' : 'var(--dash-text-ghost)', flexShrink: 0 }" class="tabular-nums">{{ pos.position }}</div>
           <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-faint); text-transform: uppercase; letter-spacing: 0.06em;">{{ pi === 0 ? 'Entry Page' : `Page ${pos.position}` }}</span>
         </div>
 
@@ -55,10 +55,10 @@
       <!-- Form submission (final step) -->
       <div v-if="data.formSubmissions?.length" style="margin-bottom: 16px;">
         <div class="flex items-center gap-3" style="margin-bottom: 10px;">
-          <div style="width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; background: #C4343A; flex-shrink: 0;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; background: var(--dash-accent); flex-shrink: 0;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <span style="font-size: 14px; font-weight: 600; color: #C4343A; text-transform: uppercase; letter-spacing: 0.06em;">Form Submitted</span>
+          <span style="font-size: 14px; font-weight: 600; color: var(--dash-accent); text-transform: uppercase; letter-spacing: 0.06em;">Form Submitted</span>
         </div>
         <div style="padding-left: 40px;">
           <div v-for="(f, i) in data.formSubmissions" :key="i" :style="{ padding: '10px 0', borderBottom: i < data.formSubmissions.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">

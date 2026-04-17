@@ -31,7 +31,7 @@
         <p style="font-size: 14px; color: var(--dash-text-ghost); margin-bottom: 12px;">"Header CTA" = clicked "Get Started" or welcome page button. "Section + Page Form" = viewed sections then submitted via modal/inline/contact form (not header CTA). "Direct Submit" = submitted without viewing sections or clicking header CTA.</p>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
           <div style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 14px; text-align: center;">
-            <p style="font-size: clamp(18px, 4vw, 24px); font-weight: 700; color: #C4343A;" class="tabular-nums">{{ paths.sectionAndCta }}</p>
+            <p style="font-size: clamp(18px, 4vw, 24px); font-weight: 700; color: var(--dash-accent);" class="tabular-nums">{{ paths.sectionAndCta }}</p>
             <p style="font-size: 14px; color: var(--dash-text-faint); margin-top: 4px;">Section + Header CTA</p>
             <p style="font-size: 13px; color: var(--dash-text-ghost); margin-top: 2px;" class="tabular-nums">{{ pct(paths.sectionAndCta) }}%</p>
           </div>
@@ -73,14 +73,14 @@
             </div>
             <span style="font-size: 14px; color: var(--dash-text-body); width: 70px; text-align: right;" class="tabular-nums">{{ r.viewers }}</span>
             <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary); width: 80px; text-align: right;" class="tabular-nums">{{ r.ctaClickers }}</span>
-            <span :style="{ fontSize: '14px', fontWeight: 600, color: r.ctaRate > 0 ? '#C4343A' : 'var(--dash-text-ghost)', width: '70px', textAlign: 'right' }" class="tabular-nums">{{ r.ctaRate }}%</span>
+            <span :style="{ fontSize: '14px', fontWeight: 600, color: r.ctaRate > 0 ? 'var(--dash-accent)' : 'var(--dash-text-ghost)', width: '70px', textAlign: 'right' }" class="tabular-nums">{{ r.ctaRate }}%</span>
             <span style="font-size: 14px; color: var(--dash-text-faint); width: 80px; text-align: right;" class="tabular-nums">{{ r.formSubmitters }}</span>
           </div>
           <!-- Mobile -->
           <div class="sm:hidden" style="padding: 10px 0;">
             <div class="flex items-center justify-between mb-1">
               <span style="font-size: 14px; font-weight: 500; color: var(--dash-text-primary);">{{ r.section }}</span>
-              <span :style="{ fontSize: '14px', fontWeight: 600, color: r.ctaRate > 0 ? '#C4343A' : 'var(--dash-text-ghost)' }" class="tabular-nums">{{ r.ctaRate }}% CTA</span>
+              <span :style="{ fontSize: '14px', fontWeight: 600, color: r.ctaRate > 0 ? 'var(--dash-accent)' : 'var(--dash-text-ghost)' }" class="tabular-nums">{{ r.ctaRate }}% CTA</span>
             </div>
             <div class="flex items-center gap-4" style="font-size: 14px; color: var(--dash-text-faint);">
               <span>{{ r.page }}</span>

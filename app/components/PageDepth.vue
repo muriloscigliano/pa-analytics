@@ -23,13 +23,13 @@
           </div>
           <span style="font-size: 14px; color: var(--dash-text-body); width: 80px; text-align: right;" class="tabular-nums">{{ r.visitors }}</span>
           <span style="font-size: 14px; color: var(--dash-text-body); width: 90px; text-align: right;" class="tabular-nums">{{ r.submitters }}</span>
-          <span :style="{ fontSize: '14px', fontWeight: 600, color: r.rate > 0 ? '#C4343A' : 'var(--dash-text-ghost)', width: '80px', textAlign: 'right' }" class="tabular-nums">{{ r.rate }}%</span>
+          <span :style="{ fontSize: '14px', fontWeight: 600, color: r.rate > 0 ? 'var(--dash-accent)' : 'var(--dash-text-ghost)', width: '80px', textAlign: 'right' }" class="tabular-nums">{{ r.rate }}%</span>
         </div>
         <!-- Mobile -->
         <div class="sm:hidden" style="padding: 10px 0;">
           <div class="flex items-center justify-between mb-1">
             <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);" class="tabular-nums">{{ r.label }}</span>
-            <span :style="{ fontSize: '14px', fontWeight: 600, color: r.rate > 0 ? '#C4343A' : 'var(--dash-text-ghost)' }" class="tabular-nums">{{ r.rate }}% conv.</span>
+            <span :style="{ fontSize: '14px', fontWeight: 600, color: r.rate > 0 ? 'var(--dash-accent)' : 'var(--dash-text-ghost)' }" class="tabular-nums">{{ r.rate }}% conv.</span>
           </div>
           <div class="progress-track mb-2" style="height: 6px;"><div class="progress-fill" :style="{ width: r.pct + '%' }" /></div>
           <div class="flex items-center gap-4" style="font-size: 14px; color: var(--dash-text-faint);">

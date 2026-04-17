@@ -18,7 +18,7 @@
             <p style="font-size: 14px; color: var(--dash-text-faint); margin-top: 6px;">Clicked Login</p>
           </div>
           <div style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 16px; text-align: center;">
-            <p style="font-size: clamp(20px, 5vw, 28px); font-weight: 700; color: #C4343A;" class="tabular-nums">{{ loginRate }}%</p>
+            <p style="font-size: clamp(20px, 5vw, 28px); font-weight: 700; color: var(--dash-accent);" class="tabular-nums">{{ loginRate }}%</p>
             <p style="font-size: 14px; color: var(--dash-text-faint); margin-top: 6px;">Existing Customers</p>
           </div>
           <div style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 16px; text-align: center;">
@@ -29,7 +29,7 @@
 
         <!-- Bar visualization -->
         <div style="height: 8px; border-radius: 4px; overflow: hidden; display: flex; margin-bottom: 20px;">
-          <div :style="{ width: loginRate + '%', background: '#C4343A' }" />
+          <div :style="{ width: loginRate + '%', background: 'var(--dash-accent)' }" />
           <div :style="{ width: browseRate + '%', background: 'var(--dash-border-card)' }" />
         </div>
 

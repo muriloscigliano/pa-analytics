@@ -17,7 +17,7 @@
           <p style="font-size: 14px; color: var(--dash-text-faint); margin-top: 4px;">Bounced (1 page)</p>
         </div>
         <div style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 14px; text-align: center;">
-          <p style="font-size: clamp(18px, 4vw, 24px); font-weight: 700; color: #C4343A;" class="tabular-nums">{{ stats.multiPage }} <span style="font-size: 14px; font-weight: 400; color: var(--dash-text-ghost);">({{ multiPct }}%)</span></p>
+          <p style="font-size: clamp(18px, 4vw, 24px); font-weight: 700; color: var(--dash-accent);" class="tabular-nums">{{ stats.multiPage }} <span style="font-size: 14px; font-weight: 400; color: var(--dash-text-ghost);">({{ multiPct }}%)</span></p>
           <p style="font-size: 14px; color: var(--dash-text-faint); margin-top: 4px;">Navigated (2+ pages)</p>
         </div>
       </div>
@@ -28,18 +28,18 @@
           <button
             @click="selectedPage = ''"
             :style="{
-              fontSize: '14px', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', border: '1px solid ' + (!selectedPage ? '#C4343A' : 'var(--dash-border-card)'),
+              fontSize: '14px', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', border: '1px solid ' + (!selectedPage ? 'var(--dash-accent)' : 'var(--dash-border-card)'),
               background: !selectedPage ? 'rgba(196,52,58,0.08)' : 'var(--dash-bg-inset)',
-              color: !selectedPage ? '#C4343A' : 'var(--dash-text-body)', fontWeight: !selectedPage ? 600 : 400
+              color: !selectedPage ? 'var(--dash-accent)' : 'var(--dash-text-body)', fontWeight: !selectedPage ? 600 : 400
             }"
           >All pages</button>
           <button
             v-for="p in topPages" :key="p.page"
             @click="selectedPage = p.page"
             :style="{
-              fontSize: '14px', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', border: '1px solid ' + (selectedPage === p.page ? '#C4343A' : 'var(--dash-border-card)'),
+              fontSize: '14px', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', border: '1px solid ' + (selectedPage === p.page ? 'var(--dash-accent)' : 'var(--dash-border-card)'),
               background: selectedPage === p.page ? 'rgba(196,52,58,0.08)' : 'var(--dash-bg-inset)',
-              color: selectedPage === p.page ? '#C4343A' : 'var(--dash-text-body)', fontWeight: selectedPage === p.page ? 600 : 400
+              color: selectedPage === p.page ? 'var(--dash-accent)' : 'var(--dash-text-body)', fontWeight: selectedPage === p.page ? 600 : 400
             }"
           >{{ p.page }}</button>
         </div>

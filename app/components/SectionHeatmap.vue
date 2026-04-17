@@ -16,7 +16,7 @@
             style="border-radius: 12px; border: 1px solid var(--dash-border-card); padding: 16px; position: relative; overflow: hidden;"
           >
             <!-- Heat background -->
-            <div :style="{ position: 'absolute', inset: 0, background: '#C4343A', opacity: opacity(s.views), borderRadius: '12px', pointerEvents: 'none' }" />
+            <div :style="{ position: 'absolute', inset: 0, background: 'var(--dash-accent)', opacity: opacity(s.views), borderRadius: '12px', pointerEvents: 'none' }" />
             <div style="position: relative;">
               <p style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary); margin-bottom: 10px; line-height: 1.3;">{{ s.section }}</p>
               <div class="flex items-center justify-between">

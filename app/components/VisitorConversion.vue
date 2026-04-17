@@ -10,7 +10,7 @@
         <div v-for="(r, i) in rows" :key="i" style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 16px; padding: 24px;">
           <div class="flex items-center justify-between" style="margin-bottom: 16px;">
             <p style="font-size: 16px; font-weight: 600; color: var(--dash-text-primary); text-transform: capitalize;">{{ r.type }}</p>
-            <span :style="{ fontSize: '14px', fontWeight: 600, color: r.rate > 0 ? '#C4343A' : 'var(--dash-text-ghost)' }" class="tabular-nums">{{ r.rate }}% conv.</span>
+            <span :style="{ fontSize: '14px', fontWeight: 600, color: r.rate > 0 ? 'var(--dash-accent)' : 'var(--dash-text-ghost)' }" class="tabular-nums">{{ r.rate }}% conv.</span>
           </div>
           <div class="flex items-center justify-between" style="padding: 8px 0; border-bottom: 1px solid var(--dash-border-row);">
             <span style="font-size: 14px; color: var(--dash-text-muted);">Visitors</span>

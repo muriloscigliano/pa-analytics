@@ -12,26 +12,48 @@ export function isPostHogConfigured(): boolean {
   return !!(apiKey && projectId && apiKey !== 'phx_your_key_here')
 }
 
-export async function queryPostHog(hogql: string): Promise<{ results: any[]; columns: string[] }> {
+interface QueryResult { results: any[]; columns: string[] }
+
+const CACHE_TTL_MS = 5 * 60 * 1000
+const cache = new Map<string, { value: QueryResult; expires: number }>()
+const inflight = new Map<string, Promise<QueryResult>>()
+
+async function fetchPostHog(hogql: string): Promise<QueryResult> {
   const { apiKey, projectId, host } = getPostHogConfig()
 
   if (!apiKey || !projectId || apiKey === 'phx_your_key_here') {
     throw createError({ statusCode: 500, message: 'PostHog credentials not configured' })
   }
 
-  const response = await $fetch<any>(`${host}/api/projects/${projectId}/query/`, {
+  return await $fetch<QueryResult>(`${host}/api/projects/${projectId}/query/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${apiKey}`,
     },
-    body: {
-      query: {
-        kind: 'HogQLQuery',
-        query: hogql,
-      },
-    },
+    body: { query: { kind: 'HogQLQuery', query: hogql } },
+    retry: 2,
+    retryDelay: 400,
   })
+}
 
-  return response
+export async function queryPostHog(hogql: string): Promise<QueryResult> {
+  const key = hogql
+  const now = Date.now()
+
+  const cached = cache.get(key)
+  if (cached && cached.expires > now) return cached.value
+
+  const existing = inflight.get(key)
+  if (existing) return existing
+
+  const promise = fetchPostHog(hogql)
+    .then(value => {
+      cache.set(key, { value, expires: Date.now() + CACHE_TTL_MS })
+      return value
+    })
+    .finally(() => inflight.delete(key))
+
+  inflight.set(key, promise)
+  return promise
 }

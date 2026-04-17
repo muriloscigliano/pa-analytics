@@ -25,14 +25,14 @@
           <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary); width: 80px; text-align: right;" class="tabular-nums">{{ ch.converters }}</span>
           <span style="font-size: 14px; color: var(--dash-text-faint); width: 60px; text-align: right;" class="tabular-nums">{{ ch.convRate }}%</span>
           <span style="font-size: 14px; color: var(--dash-text-body); width: 70px; text-align: right;" class="tabular-nums">{{ ch.loggers }}</span>
-          <span :style="{ fontSize: '14px', fontWeight: 600, color: ch.loginRate > 30 ? '#C4343A' : 'var(--dash-text-faint)', width: '70px', textAlign: 'right' }" class="tabular-nums">{{ ch.loginRate }}%</span>
+          <span :style="{ fontSize: '14px', fontWeight: 600, color: ch.loginRate > 30 ? 'var(--dash-accent)' : 'var(--dash-text-faint)', width: '70px', textAlign: 'right' }" class="tabular-nums">{{ ch.loginRate }}%</span>
           <span style="font-size: 14px; color: var(--dash-text-body); width: 55px; text-align: right;" class="tabular-nums">{{ ch.callers || 0 }}</span>
         </div>
         <!-- Mobile -->
         <div class="sm:hidden" style="padding: 10px 0;">
           <div class="flex items-center justify-between mb-1">
             <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary);">{{ ch.channel }}</span>
-            <span :style="{ fontSize: '14px', fontWeight: 600, color: ch.loginRate > 30 ? '#C4343A' : 'var(--dash-text-faint)' }" class="tabular-nums">{{ ch.loginRate }}% login</span>
+            <span :style="{ fontSize: '14px', fontWeight: 600, color: ch.loginRate > 30 ? 'var(--dash-accent)' : 'var(--dash-text-faint)' }" class="tabular-nums">{{ ch.loginRate }}% login</span>
           </div>
           <div class="flex items-center gap-4" style="font-size: 14px; color: var(--dash-text-faint);">
             <span class="tabular-nums">{{ ch.visitors }} visitors</span>
@@ -79,12 +79,12 @@
             <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary); width: 70px; text-align: right;" class="tabular-nums">{{ c.converters }}</span>
             <span style="font-size: 14px; color: var(--dash-text-faint); width: 60px; text-align: right;" class="tabular-nums">{{ c.convRate }}%</span>
             <span style="font-size: 14px; color: var(--dash-text-body); width: 70px; text-align: right;" class="tabular-nums">{{ c.loggers }}</span>
-            <span :style="{ fontSize: '14px', fontWeight: 600, color: c.loginRate > 30 ? '#C4343A' : 'var(--dash-text-faint)', width: '70px', textAlign: 'right' }" class="tabular-nums">{{ c.loginRate }}%</span>
+            <span :style="{ fontSize: '14px', fontWeight: 600, color: c.loginRate > 30 ? 'var(--dash-accent)' : 'var(--dash-text-faint)', width: '70px', textAlign: 'right' }" class="tabular-nums">{{ c.loginRate }}%</span>
           </div>
           <div class="sm:hidden" style="padding: 10px 0;">
             <div class="flex items-center justify-between mb-1">
               <span style="font-size: 14px; font-weight: 500; color: var(--dash-text-primary);">{{ c.campaignName || c.campaignId }}</span>
-              <span :style="{ fontSize: '14px', fontWeight: 600, color: c.loginRate > 30 ? '#C4343A' : 'var(--dash-text-faint)' }" class="tabular-nums">{{ c.loginRate }}% login</span>
+              <span :style="{ fontSize: '14px', fontWeight: 600, color: c.loginRate > 30 ? 'var(--dash-accent)' : 'var(--dash-text-faint)' }" class="tabular-nums">{{ c.loginRate }}% login</span>
             </div>
             <div class="flex items-center gap-3" style="font-size: 14px; color: var(--dash-text-faint);">
               <span>{{ c.landingPage }}</span>

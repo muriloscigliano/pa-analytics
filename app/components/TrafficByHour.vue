@@ -9,7 +9,7 @@
       <!-- Peak stats -->
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4" style="margin-bottom: 24px;">
         <div style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 14px; text-align: center;">
-          <p style="font-size: clamp(18px, 4vw, 24px); font-weight: 700; color: #C4343A;" class="tabular-nums">{{ peakWindow }}</p>
+          <p style="font-size: clamp(18px, 4vw, 24px); font-weight: 700; color: var(--dash-accent);" class="tabular-nums">{{ peakWindow }}</p>
           <p style="font-size: 14px; color: var(--dash-text-faint); margin-top: 4px;">Busiest Window</p>
         </div>
         <div style="background: var(--dash-bg-inset); border: 1px solid var(--dash-border-card); border-radius: 12px; padding: 14px; text-align: center;">
@@ -28,7 +28,7 @@
         <div v-for="(h, i) in block.hours" :key="h.hour" class="flex items-center gap-3" :style="{ padding: '6px 0', borderBottom: i < block.hours.length - 1 ? '1px solid var(--dash-border-row)' : 'none' }">
           <span style="font-size: 14px; color: var(--dash-text-ghost); min-width: 44px;" class="tabular-nums">{{ h.label }}</span>
           <div style="flex: 1;">
-            <div class="progress-track" style="height: 6px;"><div class="progress-fill" :style="{ width: h.pct + '%', background: h.isPeak ? '#C4343A' : undefined }" /></div>
+            <div class="progress-track" style="height: 6px;"><div class="progress-fill" :style="{ width: h.pct + '%', background: h.isPeak ? 'var(--dash-accent)' : undefined }" /></div>
           </div>
           <span style="font-size: 14px; font-weight: 600; color: var(--dash-text-primary); min-width: 32px; text-align: right;" class="tabular-nums">{{ h.pageviews || '-' }}</span>
           <span style="font-size: 14px; color: var(--dash-text-faint); min-width: 60px; text-align: right;" class="tabular-nums">{{ h.users }} users</span>

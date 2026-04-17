@@ -19,9 +19,9 @@
             padding: '6px 12px', borderRadius: '100px', cursor: 'pointer',
             fontSize: '14px', fontWeight: 500,
             fontFamily: 'var(--pa-font-body)',
-            border: period === opt.value ? '1px solid #C4343A' : '1px solid var(--dash-border-card)',
-            background: period === opt.value ? 'rgba(196, 52, 58, 0.1)' : 'transparent',
-            color: period === opt.value ? '#C4343A' : 'var(--dash-text-faint)',
+            border: period === opt.value ? '1px solid var(--dash-accent)' : '1px solid var(--dash-border-card)',
+            background: period === opt.value ? 'var(--dash-accent-soft)' : 'transparent',
+            color: period === opt.value ? 'var(--dash-accent)' : 'var(--dash-text-faint)',
           }"
         >
           {{ opt.label }}
@@ -34,8 +34,8 @@
             display: 'flex', alignItems: 'center', gap: '6px',
             padding: '6px 12px', borderRadius: '100px', cursor: 'pointer',
             border: '1px solid var(--dash-border-card)',
-            background: refreshing ? 'rgba(196, 52, 58, 0.1)' : 'var(--dash-bg-inset)',
-            color: refreshing ? '#C4343A' : 'var(--dash-text-body)',
+            background: refreshing ? 'var(--dash-accent-soft)' : 'var(--dash-bg-inset)',
+            color: refreshing ? 'var(--dash-accent)' : 'var(--dash-text-body)',
             fontSize: '14px', fontWeight: 500,
             fontFamily: 'var(--pa-font-body)',
           }"
@@ -65,7 +65,7 @@
     </div>
     <!-- Last updated -->
     <p v-if="lastUpdated" class="mt-3 sm:mt-2 sm:text-right" style="font-size: 14px; color: var(--dash-text-ghost);">
-      Last updated: {{ lastUpdated }}
+      Last updated: {{ lastUpdated }} · auto-refresh every 5 min
     </p>
   </div>
 </template>
@@ -83,19 +83,38 @@ function updateTimestamp() {
   lastUpdated.value = new Date().toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' })
 }
 
+const refreshKey = useState<number>('refreshKey', () => 0)
+
 async function refreshAll() {
   refreshing.value = true
-  // Trigger re-fetch by bumping a refresh key
-  const refreshKey = useState<number>('refreshKey', () => 0)
   refreshKey.value++
-  // Wait a moment for all fetches to fire
   await new Promise(resolve => setTimeout(resolve, 2000))
   updateTimestamp()
   refreshing.value = false
 }
 
+const AUTO_REFRESH_MS = 5 * 60 * 1000
+let intervalId: ReturnType<typeof setInterval> | null = null
+
+function silentRefresh() {
+  if (document.hidden) return
+  refreshKey.value++
+  updateTimestamp()
+}
+
+function onVisibilityChange() {
+  if (!document.hidden) silentRefresh()
+}
+
 onMounted(() => {
   updateTimestamp()
+  intervalId = setInterval(silentRefresh, AUTO_REFRESH_MS)
+  document.addEventListener('visibilitychange', onVisibilityChange)
+})
+
+onBeforeUnmount(() => {
+  if (intervalId) clearInterval(intervalId)
+  document.removeEventListener('visibilitychange', onVisibilityChange)
 })
 
 const periods = [

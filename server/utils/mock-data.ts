@@ -78,32 +78,6 @@ export const MOCK = {
     ],
   },
 
-  abComparison: {
-    columns: ['variant', 'event', 'total', 'users'],
-    results: [
-      ['control', '$autocapture', 1456, 333],
-      ['control', '$pageview', 1285, 721],
-      ['control', '$pageleave', 839, 438],
-      ['control', 'section_viewed', 768, 173],
-      ['control', '$web_vitals', 751, 377],
-      ['control', 'login_clicked', 507, 228],
-      ['control', 'mobile_menu_toggled', 183, 106],
-      ['control', 'cta_clicked', 69, 38],
-      ['control', 'menu_opened', 52, 27],
-      ['control', 'menu_link_clicked', 42, 31],
-      ['control', 'form_submitted', 22, 16],
-      ['control', 'header_cta_clicked', 21, 19],
-      ['none', '$autocapture', 1836, 185],
-      ['none', 'section_viewed', 1417, 319],
-      ['none', '$pageview', 790, 621],
-      ['none', '$web_vitals', 579, 346],
-      ['none', '$pageleave', 389, 334],
-      ['none', 'cta_clicked', 143, 94],
-      ['none', 'form_submitted', 34, 34],
-      ['none', 'header_cta_clicked', 25, 25],
-    ],
-  },
-
   visitorTypes: {
     columns: ['visitor_type', 'pageviews', 'users', 'clicks', 'sections_viewed'],
     results: [
@@ -126,15 +100,6 @@ export const MOCK = {
       ['Mobile', 'Samsung Internet', 'Android', 146, 100],
       ['Desktop', 'Chrome', 'Chrome OS', 96, 53],
       ['Desktop', 'Chrome', 'Linux', 66, 44],
-    ],
-  },
-
-  trafficSources: {
-    columns: ['nav_source', 'visits', 'users'],
-    results: [
-      ['direct', 4346, 2815],
-      ['menu_mobile', 292, 108],
-      ['menu_desktop', 98, 23],
     ],
   },
 
