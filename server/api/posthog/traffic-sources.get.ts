@@ -13,6 +13,10 @@ export default defineEventHandler(async (event): Promise<{ results: any[]; colum
       WHERE event = '$pageview'
         AND timestamp >= now() - INTERVAL ${days} DAY
         AND properties.$referring_domain NOT LIKE '%localhost%'
+        AND person_id NOT IN (
+          SELECT DISTINCT person_id FROM events
+          WHERE event = 'login_clicked' AND timestamp >= now() - INTERVAL ${days} DAY
+        )
       GROUP BY person_id
     ),
     classified AS (

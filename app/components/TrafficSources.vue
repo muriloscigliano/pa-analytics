@@ -1,7 +1,7 @@
 <template>
   <div class="dash-card">
     <h2 class="dash-title">Traffic Sources</h2>
-    <p class="dash-help">Where visitors actually come from — paid search, organic, social, direct. Paid is detected by gclid/msclkid on the landing URL, since ad clicks often strip the referrer.</p>
+    <p class="dash-help">Where visitors actually come from — paid search, organic, social, direct. Paid is detected by gclid/msclkid on the landing URL, since ad clicks often strip the referrer. Existing customers who came just to log in are filtered out, matching Entry Pages.</p>
     <LoadingSpinner v-if="pending" />
     <ErrorAlert v-else-if="error" :message="error.message" @retry="refresh" />
     <EmptyState v-else-if="!sources.length" title="Waiting for traffic" description="Traffic breakdown will appear once pageview events start flowing." />

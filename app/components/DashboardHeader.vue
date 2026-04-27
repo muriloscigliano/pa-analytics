@@ -65,7 +65,7 @@
     </div>
     <!-- Last updated -->
     <p v-if="lastUpdated" class="mt-3 sm:mt-2 sm:text-right" style="font-size: 14px; color: var(--dash-text-ghost);">
-      Last updated: {{ lastUpdated }} · auto-refresh every 5 min
+      Last updated: {{ lastUpdated }} · auto-refresh every 30 min
     </p>
   </div>
 </template>
@@ -93,7 +93,7 @@ async function refreshAll() {
   refreshing.value = false
 }
 
-const AUTO_REFRESH_MS = 5 * 60 * 1000
+const AUTO_REFRESH_MS = 30 * 60 * 1000
 let intervalId: ReturnType<typeof setInterval> | null = null
 
 function silentRefresh() {

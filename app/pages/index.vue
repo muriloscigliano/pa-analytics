@@ -15,6 +15,7 @@
 
     <!-- 2. CONTENT ENGAGEMENT -->
     <div class="dash-section-header">Content Engagement</div>
+    <div class="section-gap"><ClickHeatmap /></div>
     <div class="section-gap"><SectionEngagement /></div>
     <div class="section-gap"><SectionHeatmap /></div>
     <div class="section-gap"><SectionFunnel /></div>
